@@ -1,0 +1,67 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+	FONT-SIZE: 12px
+}
+
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #f88c01; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #888888; TEXT-DECORATION: none
+}
+#container {
+	WIDTH: 100%
+}
+#Header {
+	MARGIN: 0px auto; WIDTH: 100%; HEIGHT: 30px
+}
+#menu {
+	FLOAT: right
+}
+#menu UL {
+	LIST-STYLE-TYPE: none; MARGIN: 0px; LIST-STYLE-IMAGE: none
+}
+#menu UL LI {
+	LINE-HEIGHT: 28px; MARGIN: 0px 10px; DISPLAY: block; FLOAT: left
+}
+.menuDiv {
+	WIDTH: 1px; BACKGROUND: #999; HEIGHT: 28px
+}
+
+#topNavDiv{
+	MARGIN: 2px 5px 0px 5px;
+	height:20px;
+	PADDING-top: 4px;
+	PADDING-LEFT: 8px;
+	border-bottom:#00CCFF 2px solid;
+}
+
+.userInput_table {
+	border-collapse:collapse;
+}
+.userInput_table td {
+	border:1px solid #BBC6E8;
+}
+
+.td_title {
+	background:#DFE8F6 none repeat scroll 0%;
+	border-color:#BBC6E8;
+	padding-right:10px;
+	padding-top:4px;
+	padding-bottom:4px;
+	text-align:right;
+	white-space: nowrap;
+}
+
+.td_context {
+	border-color:#BBC6E8;
+	padding:4px 0pt 4px 10px;
+	text-align:left;
+}
