@@ -1,0 +1,8 @@
+﻿[
+{ "id":1, "code":"01", "name":"零星购置", "addr":"", "col4":"", 
+	"children":[{ "id":2, "code":"0101", "name":"办公零购", "addr":"", "checked":true},
+							{ "id":3, "code":"0102", "name":"渠道零购", "addr":"", "checked":true 
+							},{ "id":3, "code":"0102", "name":"车辆购置", "addr":"", "checked":true 
+							}] 
+}
+]
