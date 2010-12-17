@@ -178,7 +178,7 @@
   <div region="west" split="true" title="当前用户：DarkXie"
 	style="width: 160px; padding-left: 1px;">
     <div id="leftNav" class="easyui-accordion" fit="true">
-      <div title="我的收藏" icon="icon-ok" style="overflow: auto; padding: 2px;"> <a href="#" class="easyui-linkbutton" plain="true" icon="icon-save">定制我的收藏</a>
+      <div id="Favorites" title="我的收藏" icon="icon-ok" style="overflow: auto; padding: 2px;"> <a href="#" class="easyui-linkbutton" plain="true" icon="icon-save">定制我的收藏</a>
         <ul id="tt1" class="easyui-tree">
           <li><span>Folder1</span>
             <ul>
@@ -196,28 +196,13 @@
           <li><span>File2</span></li>
         </ul>
       </div>
-      <div title="快速通道" selected="true" icon="icon-redo" style="padding: 2px;"> <a href="#" class="easyui-linkbutton" plain="true" style="width: 138px;"
+      <div id="GreenChannel" title="快速通道" selected="true" icon="icon-redo" style="padding: 2px;"> <a href="#" class="easyui-linkbutton" plain="true" style="width: 138px;"
 	icon="icon-polygon" onClick="addTab('百度搜索', 'http://www.baidu.com');">百度搜索</a> <a href="#" class="easyui-linkbutton" plain="true" style="width: 138px;"
 	icon="icon-redo" onClick="addTab('新浪中国', 'http://www.sina.com.cn');">新浪中国</a> <a href="#" class="easyui-linkbutton" plain="true" style="width: 138px;"
 	icon="icon-polygon" onClick="addTab('搜狐首页', 'http://www.sohu.com');">搜狐首页</a> <a href="#" class="easyui-linkbutton" plain="true" style="width: 138px;"
 	icon="icon-redo" onClick="addTab('腾讯首页', 'http://www.qq.com');">腾讯首页</a> </div>
-      <div title="最近操作" icon="icon-reload">
-        <ul id="tt1" class="easyui-tree">
-          <li><span>Folder1</span>
-            <ul>
-              <li><span>Sub Folder 1</span>
-                <ul>
-                  <li><span>File 11</span></li>
-                  <li><span>File 12</span></li>
-                  <li><span>File 13</span></li>
-                </ul>
-              </li>
-              <li><span>File 2</span></li>
-              <li><span>File 3</span></li>
-            </ul>
-          </li>
-          <li><span>File2</span></li>
-        </ul>
+      <div id="History" title="最近操作" icon="icon-reload" style="padding: 2px;">
+        
       </div>
     </div>
   </div>
@@ -237,18 +222,35 @@
 		customtheme : [ "#1c5a80", "#18374a" ],
 		contentsource : "markup" //"markup" or ["container_id", "path_to_menu_file"]
 	})
-
+		
 	function addTab(title, url) {
+		refHistory(title, url);
+		
 		if ($('#main').tabs('exists', title)) {
 			$('#main').tabs('select', title);
 		} else {
-			var content = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99%;">__tag_200$110_';
+			var content = '<iframe scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99%;"></iframe>';
 			$('#main').tabs('add', {
 				title : title,
 				content : content,
 				closable : true
 			});
 		}
+	}
+	
+	var maxHis = 10;
+	
+	function refHistory(title, url){
+		var items = $('#History').children();
+		for(i = 0; i < items.length; i++){
+			if ($(items[i]).text() == title){
+				return;
+			}
+		}
+		if (items.length == maxHis)
+			$(items[maxHis -1]).remove();
+		var tmp = $('<a href=\"#\" class=\"easyui-linkbutton\" iconCls=\"icon-star\" plain=\"true\" style=\"width: 138px;\" onClick=\"addTab(\''+title+'\', \''+url+'\');\">'+title+'</a>').prependTo('#History');
+		$(tmp).linkbutton();
 	}
 
 	$().ready(function() {
