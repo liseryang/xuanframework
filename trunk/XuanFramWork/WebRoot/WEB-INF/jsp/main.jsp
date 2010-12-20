@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <HEAD>
-<TITLE>中国移动通信集团工程项目管理系统</TITLE>
+<TITLE>DEMO</TITLE>
 <META content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <link rel=stylesheet type=text/css href="/styles/xuan.css">
 <link rel=stylesheet type=text/css href="/styles/ddsmoothmenu.css">
@@ -15,15 +15,15 @@
 <style type="text/css">
 <!--
 .topinn {
-	background: url(../../images/banner_bg.jpg) top left repeat-x #e4f5ff;
+	background: url(/images/banner_bg.jpg) top left repeat-x #e4f5ff;
 	height: 60px;
 	width: 100%;
 	clear: both;
 }
 
 .topinnlogo {
-	background: url(../../images/banner.jpg) top left no-repeat;
-	height: 60px;
+	background: url(/images/banner_bg.jpg) top left no-repeat;
+	height: 59px;
 }
 
 .leftNavDiv {
@@ -80,7 +80,7 @@
 	class="topinn">
   <TBODY>
     <TR class="topinnlogo">
-      <TD width=500 align="left">&nbsp;</TD>
+      <TD width=500 align="left">这里可以填写你的Title</TD>
       <TD valign="bottom"><DIV id=menu>
           <UL>
             <LI><A href="###">功能地图</A></LI>
@@ -257,5 +257,5 @@
 		$("#home").attr('src', '/c/jsp/table');
 
 	})
-	$("#layout").css("height",document.documentElement.clientHeight - 94);
+	$("#layout").css("height",document.documentElement.clientHeight - 89);
 </SCRIPT>
