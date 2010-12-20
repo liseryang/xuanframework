@@ -16,6 +16,8 @@
 <script type="text/javascript" src="/scripts/datagrid-detailview.js"></script>
 <script type=text/javascript src="/scripts/jquery.form.js"></SCRIPT>
 <script type=text/javascript src="/scripts/jquery.json-2.2.min.js"></SCRIPT>
+<script type=text/javascript src="/scripts/jquery.cookies.2.2.0.min.js"></SCRIPT>
+<script type=text/javascript src="/scripts/jquery.sessionWarn.js"></SCRIPT>
 <script type=text/javascript src="/scripts/xuan.js"></SCRIPT>
 </head>
 <body <%if (request.getAttribute("xuan_ui_page_nav") != null && !request.getAttribute("xuan_ui_page_nav").equals("null")) {%>class="easyui-layout"<%} %>>
