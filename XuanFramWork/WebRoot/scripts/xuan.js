@@ -259,7 +259,7 @@ function showModal(title, url, icon, onClose, width, height) {
  */
 
 function popWin(title, url, icon, width, height) {
-	var win = $('<div id="my_pop_win"></div>')
+	var win = $('<div id="my_pop_win" class="messager-body"></div>')
 			.appendTo('body');
 	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="'
 			+ url + '" style="width:100%;height:100%;"></iframe>';
