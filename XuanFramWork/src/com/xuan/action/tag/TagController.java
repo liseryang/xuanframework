@@ -1,11 +1,16 @@
 package com.xuan.action.tag;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -109,6 +114,16 @@ public class TagController extends BaseController {
 	public void findPagination(HttpServletRequest req, HttpServletResponse res) {
 		ParamUtil.print(req);
 		System.out.println(req.getRequestURL());
+	}
+	@RequestMapping(value = "/session/extend")
+	public void sessionExtend(HttpServletRequest req, HttpServletResponse res)
+			throws JspException {
+		System.out.println("session extend");
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("status", "ok");
+		JsonConfig jsonConfig = new JsonConfig();
+		JSONObject json = JSONObject.fromObject(result, jsonConfig);
+		this.writeMessage(res, json.toString());
 	}
 
 	@RequestMapping(value = "/q/{formId}/{queryId}")
