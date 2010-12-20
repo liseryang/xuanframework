@@ -26,6 +26,7 @@ function postDataAsync(formId, url, _callBack, async) {
 }
 // 不需要form直接回调函数
 function postDataWithoutForm(url, _callBack) {
+	sessionWarn.setCookie();
 	if (url.indexOf('?') > 0)
 		url = url + "&";
 	else
@@ -44,6 +45,7 @@ function postDataWithoutForm(url, _callBack) {
 }
 // 提交form
 function postData(formId, url, _callBack) {
+	sessionWarn.setCookie();
 	var dataform = jQuery("#" + formId).formSerialize();
 	if (url.indexOf('?') > 0)
 		url = url + "&";
@@ -221,6 +223,7 @@ function searchPage(id) {
 	$('#' + id).datagrid('options').pageNumber = 1;
 	$('#' + id).datagrid('reload');
 	$('#' + id).datagrid('clearSelections');
+	sessionWarn.setCookie();
 }
 
 // 页面弹出窗口
@@ -256,7 +259,7 @@ function showModal(title, url, icon, onClose, width, height) {
  */
 
 function popWin(title, url, icon, width, height) {
-	var win = $('<div id="my_pop_win" class="messager-body"></div>')
+	var win = $('<div id="my_pop_win"></div>')
 			.appendTo('body');
 	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="'
 			+ url + '" style="width:100%;height:100%;"></iframe>';
