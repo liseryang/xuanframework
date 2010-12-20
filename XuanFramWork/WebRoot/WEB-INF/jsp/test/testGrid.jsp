@@ -39,9 +39,7 @@
       <x:col width="100" title="计划项目经理" field="programManager"></x:col>
     </x:colsWrap>
 	<x:grm iconCls="icon-search" handler="windowOpen('查看分公司', '/c/jsp/programManagement/annualPlanView');" text="查看分公司"/>
-	<x:grm iconCls="icon-search2" handler="windowOpen('查看本部', '/c/jsp/programManagement/annualPlanView2');" text="查看本部"/>
 	<x:grm iconCls="icon-edit" handler="windowOpen('调整分公司', '/c/jsp/programManagement/annualPlanEdit');" text="调整分公司"/>
-	<x:grm iconCls="icon-edit2" handler="windowOpen('调整本部', '/c/jsp/programManagement/annualPlanEdit2');" text="调整本部"/>
 	<x:grm iconCls="icon-analysis" handler="windowOpen('计划跟踪', '/c/jsp/programManagement/annualPlanTrack');" text="计划跟踪"/>
 	<x:grm iconCls="icon-polygon" handler="window.location.href='/c/jsp/programManagement/projectList';" text="项目跟踪"/>
   </x:grid2>
