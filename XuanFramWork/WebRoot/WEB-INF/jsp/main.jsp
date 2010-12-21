@@ -11,6 +11,9 @@
 <script type="text/javascript" src="/scripts/jquery-1.4.2.js"></script>
 <script type="text/javascript" src="/scripts/jquery.easyui.min.js"></script>
 <script type=text/javascript src="/scripts/ddsmoothmenu.js"></SCRIPT>
+
+<script type=text/javascript src="/scripts/jquery.cookies.2.2.0.min.js"></SCRIPT>
+<script type=text/javascript src="/scripts/jquery.sessionWarn.js"></SCRIPT>
 <script type=text/javascript src="/scripts/xuan.js"></SCRIPT>
 <style type="text/css">
 <!--
@@ -221,7 +224,14 @@
 		classname : 'ddsmoothmenu', //class added to menu's outer DIV
 		customtheme : [ "#1c5a80", "#18374a" ],
 		contentsource : "markup" //"markup" or ["container_id", "path_to_menu_file"]
-	})
+	});
+	
+	sessionWarn.init({
+		autoExtend:false,
+		timeout:30,
+		timeoutWarning:27,
+		redirectOnExpire:true
+	});
 		
 	function addTab(title, url) {
 		refHistory(title, url);
@@ -257,5 +267,5 @@
 		$("#home").attr('src', '/c/jsp/table');
 
 	})
-	$("#layout").css("height",document.documentElement.clientHeight - 89);
+	$("#layout").css("height",document.documentElement.clientHeight - 92);
 </SCRIPT>
