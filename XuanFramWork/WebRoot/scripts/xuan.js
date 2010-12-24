@@ -12,17 +12,17 @@ function postDataAsync(formId, url, _callBack, async) {
 	else
 		url = url + "?";
 	url = url + "time=" + timestamp();
-	$.ajax({
-				type : "POST",
-				url : url,
-				dataType : "json",
-				data : dataform,
-				async : async,
-				success : _callBack,
-				error : function(data) {
-					alert("ERROR");
-				}
-			});
+	$.ajax( {
+		type : "POST",
+		url : url,
+		dataType : "json",
+		data : dataform,
+		async : async,
+		success : _callBack,
+		error : function(data) {
+			alert("ERROR");
+		}
+	});
 }
 // 不需要form直接回调函数
 function postDataWithoutForm(url, _callBack) {
@@ -32,16 +32,16 @@ function postDataWithoutForm(url, _callBack) {
 	else
 		url = url + "?";
 	url = url + "time=" + timestamp();
-	$.ajax({
-				type : "POST",
-				url : url,
-				dataType : "json",
-				data : "",
-				success : _callBack,
-				error : function(data) {
-					alert("ERROR");
-				}
-			});
+	$.ajax( {
+		type : "POST",
+		url : url,
+		dataType : "json",
+		data : "",
+		success : _callBack,
+		error : function(data) {
+			alert("ERROR");
+		}
+	});
 }
 // 提交form
 function postData(formId, url, _callBack) {
@@ -53,11 +53,11 @@ function postData(formId, url, _callBack) {
 		url = url + "?";
 	url = url + "time=" + timestamp();
 	AjaxUtil._submit(url, {
-				onComplete : function(data) {
-					data = eval('(' + data.responseText + ')');
-					eval(_callBack(data));
-				}
-			}, dataform);
+		onComplete : function(data) {
+			data = eval('(' + data.responseText + ')');
+			eval(_callBack(data));
+		}
+	}, dataform);
 }
 // 哈希表
 function JsHashtable() {
@@ -125,13 +125,13 @@ function windowOpen(title, url, onClose, swidth, sheight) {
 
 // 给Grid标记使用的取数逻辑（可以废弃）
 function getPages(id) {
-	$('#_' + id + '_page_num')
-			.val(	$('#' + id + '').datagrid("options").pageNumber);
-	$('#_' + id + '_page_size')
-			.val(	$('#' + id + '').datagrid("options").pageSize);
+	$('#_' + id + '_page_num').val(
+			$('#' + id + '').datagrid("options").pageNumber);
+	$('#_' + id + '_page_size').val(
+			$('#' + id + '').datagrid("options").pageSize);
 	postDataAsync("fm_" + id, "/c/t/q/" + id, function(data) {
-				$('#' + id).datagrid('loadData', data);
-			}, false);
+		$('#' + id).datagrid('loadData', data);
+	}, false);
 }
 
 // 生成Grid与查询交互的方法
@@ -163,8 +163,8 @@ function getParams(id) {
 	aaa += ",";
 	var field = [];
 	$("[name='_" + id + "_field']").each(function() {
-				field.push($(this).val());
-			});
+		field.push($(this).val());
+	});
 	aaa += "_" + id + "_field:[";
 	for (i = 0; i < field.length; i++) {
 		if (i > 0)
@@ -177,8 +177,8 @@ function getParams(id) {
 	aaa += ",";
 	var stype = [];
 	$("[name='_" + id + "_type']").each(function() {
-				stype.push($(this).val());
-			});
+		stype.push($(this).val());
+	});
 	aaa += "_" + id + "_type" + ":[";
 	for (i = 0; i < stype.length; i++) {
 		if (i > 0)
@@ -190,8 +190,8 @@ function getParams(id) {
 	aaa += ",";
 	var operator = [];
 	$("[name='_" + id + "_operator']").each(function() {
-				operator.push($(this).val());
-			});
+		operator.push($(this).val());
+	});
 	aaa += "_" + id + "_operator" + ":[";
 	for (i = 0; i < operator.length; i++) {
 		if (i > 0)
@@ -203,8 +203,8 @@ function getParams(id) {
 	aaa += ",";
 	var values = [];
 	$("[name='_" + id + "_value']").each(function() {
-				values.push($(this).val());
-			});
+		values.push($(this).val());
+	});
 	aaa += "_" + id + "_value" + ":[";
 	for (i = 0; i < values.length; i++) {
 		if (i > 0)
@@ -228,21 +228,21 @@ function searchPage(id) {
 
 // 页面弹出窗口
 function showModal(title, url, icon, onClose, width, height) {
-	$('#popup').window({
-				title : "&nbsp;&nbsp;" + title
-			});
+	$('#popup').window( {
+		title : "&nbsp;&nbsp;" + title
+	});
 	if (icon)
-		$('#popup').window({
-					iconCls : icon
-				});
+		$('#popup').window( {
+			iconCls : icon
+		});
 	if (width)
-		$('#popup').window({
-					width : width
-				});
+		$('#popup').window( {
+			width : width
+		});
 	if (height)
-		$('#popup').window({
-					height : height
-				});
+		$('#popup').window( {
+			height : height
+		});
 	$('#print_iframe').attr('src', url);
 	$('#popup').window('open');
 }
@@ -259,27 +259,28 @@ function showModal(title, url, icon, onClose, width, height) {
  */
 
 function popWin(title, url, icon, width, height) {
-	var win = $('<div id="my_pop_win" class="messager-body"></div>')
-			.appendTo('body');
-	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="'
-			+ url + '" style="width:100%;height:100%;"></iframe>';
+	var win = $('<div id="my_pop_win" class="messager-body"></div>').appendTo(
+			'body');
+	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:100%;"></iframe>';
 	win.append(content);
-	win.window({
-				title : title,
-				width : width,
-				height : height,
-				modal : true,
-				iconCls : icon,
-				collapsible : false,
-				minimizable : false,
-				maximizable : false,
-				resizable : false,
-				onClose : function() {
-					setTimeout(function() {
-								win.window('destroy');
-							}, 100);
-				}
-			});
+	win.window( {
+		title : title,
+		width : width,
+		height : height,
+		modal : true,
+		iconCls : icon,
+		collapsible : false,
+		minimizable : false,
+		maximizable : false,
+		resizable : false,
+		onClose : function() {
+			setTimeout(function() {
+				win.window('destroy');
+			}, 100);
+		}
+	});
+	document.getElementById("my_pop_win").childNodes[0].src = url;
+	document.getElementById("my_pop_win").style.display = "block";
 	return win;
 }
 
@@ -310,7 +311,7 @@ function handRow(e, ttid, rowIndex) {
 	var rowData = $('#' + ttid).datagrid("getRows")[rowIndex];
 	eval(ttid + "_createRowMenu(rowData)");
 	$('#' + ttid + '_rowmenu').menu('show', {
-				left : position.x,
-				top : position.y
-			});
+		left : position.x,
+		top : position.y
+	});
 }
