@@ -1,11 +1,5 @@
 package com.xuan.comm.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -13,11 +7,8 @@ import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 public class BeanUtil {
-	private static Log _log = LogFactory.getLog(BeanUtil.class);
 
 	/**
 	 * 拷贝属性
@@ -51,10 +42,10 @@ public class BeanUtil {
 			if (objProperty.indexOf(".") <= 0) {
 				return objs[java.lang.Integer.parseInt(objProperty)];
 			}
-			return PropertyUtils.getProperty(objs[java.lang.Integer
-					.parseInt(objProperty
-							.substring(0, objProperty.indexOf(".")))],
-					objProperty.substring(objProperty.indexOf(".") + 1));
+			return PropertyUtils.getProperty(
+					objs[java.lang.Integer.parseInt(objProperty.substring(0,
+							objProperty.indexOf(".")))], objProperty
+							.substring(objProperty.indexOf(".") + 1));
 		}
 		return PropertyUtils.getProperty(opObj, objProperty);
 	}
@@ -79,50 +70,12 @@ public class BeanUtil {
 			Object[] objs = (Object[]) opObj;
 			if (objProperty.indexOf(".") > 0)
 				BeanUtils.setProperty(objs[java.lang.Integer
-						.parseInt(objProperty.substring(0, objProperty
-								.indexOf(".")))], objProperty
+						.parseInt(objProperty.substring(0,
+								objProperty.indexOf(".")))], objProperty
 						.substring(objProperty.indexOf(".") + 1), valueObject);
 		} else {
 			BeanUtils.setProperty(opObj, objProperty, valueObject);
 		}
-	}
-
-	/**
-	 * 序列化一个对象
-	 * 
-	 * @param f
-	 *            文件路径，绝对路径
-	 * @param obj
-	 *            对象
-	 * @throws IOException
-	 * @throws Exception
-	 */
-	public static void serializableObj(String f, Object obj) throws IOException {
-		File file = new File(f);
-		FileOutputStream os = new FileOutputStream(file);
-		ObjectOutputStream oos = new ObjectOutputStream(os);
-		oos.writeObject(obj);
-		oos.close();
-		os.close();
-	}
-
-	/**
-	 * 将一个文件反序列化成一个对象
-	 * 
-	 * @param f
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws Exception
-	 */
-	public static Object unSerializableObj(String f) throws IOException,
-			ClassNotFoundException {
-		File file = new File(f);
-		FileInputStream is = new FileInputStream(file);
-		ObjectInputStream ois = new ObjectInputStream(is);
-		Object obj = ois.readObject();
-		ois.close();
-		is.close();
-		return obj;
 	}
 
 	/**
@@ -141,9 +94,5 @@ public class BeanUtil {
 			ls.add(ff.getName());
 		}
 		return ls;
-	}
-
-	public static void main(String[] args) {
-		_log.info("==================");
 	}
 }
