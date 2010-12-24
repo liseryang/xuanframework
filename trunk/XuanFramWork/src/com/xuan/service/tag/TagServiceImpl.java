@@ -25,7 +25,7 @@ public class TagServiceImpl extends BaseService implements TagServiceInterface {
 			QueryInfo query = dao.findById(QueryInfo.class, queryId);
 			if (query == null)
 				return null;
-			querys.put(queryId, dao.findById(QueryInfo.class, queryId));
+			querys.put(queryId, query);
 		}
 		return querys.get(queryId);
 	}
