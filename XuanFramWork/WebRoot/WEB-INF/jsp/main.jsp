@@ -78,106 +78,106 @@
 -->
 </style>
 </HEAD>
-<BODY>
-<TABLE id=Header border=0 cellSpacing=0 cellPadding=0 width="100%"
-	class="topinn">
-  <TBODY>
-    <TR class="topinnlogo">
-      <TD width=500 align="left">这里可以填写你的Title</TD>
-      <TD valign="bottom"><DIV id=menu>
-          <UL>
-            <LI><A href="###">功能地图</A></LI>
-            <LI class=menuDiv></LI>
-            <LI><A href="###">查看日志</A></LI>
-            <LI class=menuDiv></LI>
-            <LI><A href="###">重登录</A></LI>
-            <LI class=menuDiv></LI>
-            <LI><A href="###">退出</A></LI>
-          </UL>
-        </DIV></TD>
-    </TR>
-  </TBODY>
-</TABLE>
+<BODY class="easyui-layout">
 <DIV id="opMenu" class="ddsmoothmenu">
-  <UL>
-    <LI><A href="###">我的任务</A>
-      <UL>
-        <LI><A href="###" onClick="addTab('待办任务', '/c/jsp/task/toDoTasks');">待办任务</A></LI>
-        <LI><A href="###">待阅任务</A></LI>
-        <LI><A href="###">在办项目</A></LI>
-        <LI><A href="###">派发任务</A></LI>
-      </UL>
-    </LI>
-    <LI><A href="###">投资计划管理</A>
-      <UL>
-        <LI><A href="###">年度计划</A>
+	  <UL>
+	    <LI><A href="###">我的任务</A>
+	      <UL>
+	        <LI><A href="###" onClick="addTab('待办任务', '/c/jsp/task/toDoTasks');">待办任务</A></LI>
+	        <LI><A href="###">待阅任务</A></LI>
+	        <LI><A href="###">在办项目</A></LI>
+	        <LI><A href="###">派发任务</A></LI>
+	      </UL>
+	    </LI>
+	    <LI><A href="###">投资计划管理</A>
+	      <UL>
+	        <LI><A href="###">年度计划</A>
+				<ul>
+	            <LI><A href="###" onClick="addTab('计划填报任务', '/c/jsp/programManagement/taskPlanSearch');">计划填报任务</A></LI>
+				<LI><A href="###" onClick="addTab('年度计划查询', '/c/jsp/programManagement/annualPlanSearch');">年度计划查询</A></LI>
+	            <LI><A href="###" onClick="addTab('地市公司查询', '/c/jsp/programManagement/annualPlanSearch2');">地市公司查询</A></LI>
+	            <LI><A href="###" onClick="addTab('滚动规划', '/c/jsp/programManagement/rollingPlanSearch');">滚动规划</A></LI>
+	          </ul>
+			</LI>
+	        <LI><A href="###">计划项目</A>
+	          <ul>
+	            <LI><A href="###" onClick="addTab('项目申请', '/c/jsp/task/taskDeclare');">项目申请</A></LI>
+	            <LI><A href="###" onClick="addTab('项目立项', '/c/jsp/task/taskApproval');">项目立项</A></LI>
+	          </ul>
+	        </LI>
+	        <LI><A href="###">基础信息设置</A>
 			<ul>
-            <LI><A href="###" onClick="addTab('计划填报任务', '/c/jsp/programManagement/taskPlanSearch');">计划填报任务</A></LI>
-			<LI><A href="###" onClick="addTab('年度计划查询', '/c/jsp/programManagement/annualPlanSearch');">年度计划查询</A></LI>
-            <LI><A href="###" onClick="addTab('地市公司查询', '/c/jsp/programManagement/annualPlanSearch2');">地市公司查询</A></LI>
-            <LI><A href="###" onClick="addTab('滚动规划', '/c/jsp/programManagement/rollingPlanSearch');">滚动规划</A></LI>
-          </ul>
+	            <LI><A href="###" onClick="addTab('计划模板', '/c/jsp/template/templateSearch');">计划模板</A></LI>
+				<LI><A href="###" onClick="addTab('能力指标', '/c/jsp/ability/abilityIndexSearch');">能力指标</A></LI>
+				<LI><A href="###" onClick="addTab('计划类别扩展', '/c/jsp/ability/planTypeSearch');">计划类别扩展</A></LI>
+	          </ul>
+			</LI>
+	      </UL>
+	    </LI>
+		<LI><A href="###">项目审计</A>
+			<ul>
+			<LI><A href="###"">项目结算</A>
+			<ul>
+				<LI><A href="###" onClick="addTab('结算审计申请', '/c/jsp/account/sendAccountBook1');">项目结算申请</A></LI>
+				<LI><A href="###" onClick="addTab('建设单位意见', '/c/jsp/account/sendAccountBook2');">建设单位意见</A></LI>
+				<LI><A href="###" onClick="addTab('选择审计单位', '/c/jsp/account/sendAccountBook3');">选择审计单位</A></LI>
+				<LI><A href="###" onClick="addTab('提交审计报告初稿', '/c/jsp/account/sendAccountBook4');">提交审计报告初稿</A></LI>
+				<LI><A href="###" onClick="addTab('确认审计报告初稿', '/c/jsp/account/sendAccountBook5');">确认审计报告初稿</A></LI>
+				<LI><A href="###" onClick="addTab('提交审计报告', '/c/jsp/account/sendAccountBook6');">提交审计报告</A></LI>
+				<LI><A href="###" onClick="addTab('确认审计报告', '/c/jsp/account/sendAccountBook7');">确认审计报告</A></LI>
+			</ul>
+			</LI>
+	        <LI><A href="###"">项目决算</A>
+			<ul>
+				<LI><A href="###" onClick="addTab('决算审计申请', '/c/jsp/account/sendAuditBook1');">决算审计申请</A></LI>
+				<LI><A href="###" onClick="addTab('财务部审计', '/c/jsp/account/sendAuditBook2');">财务部审计</A></LI>
+				<LI><A href="###" onClick="addTab('决算选择审计单位', '/c/jsp/account/sendAuditBook3');">选择审计单位</A></LI>
+				<LI><A href="###" onClick="addTab('提交决算审计报告初稿', '/c/jsp/account/sendAuditBook4');">提交决算审计报告初稿</A></LI>
+				<LI><A href="###" onClick="addTab('确认决算审计报告初稿', '/c/jsp/account/sendAuditBook5');">确认决算审计报告初稿</A></LI>
+				<LI><A href="###" onClick="addTab('提交决算审计报告', '/c/jsp/account/sendAuditBook6');">提交决算审计报告</A></LI>
+				<LI><A href="###" onClick="addTab('确认决算审计报告', '/c/jsp/account/sendAuditBook7');">确认决算审计报告</A></LI>
+				<LI><A href="###" onClick="addTab('补充供应链订单号', '/c/jsp/account/sendAuditBook8');">补充供应链订单号</A></LI>
+			</ul>
+			</LI>
+			 <LI><A href="###"">审计查询</A>
+			 	<ul>
+			 		<LI><A href="###" onClick="addTab('项目结算查询', '/c/jsp/account/projectAccountSearch');">项目结算查询</A></LI>
+					<LI><A href="###" onClick="addTab('项目决算查询', '/c/jsp/account/projectAuditSearch');">项目决算查询</A></LI>
+					</ul>
+			</LI>
+	        </ul>
 		</LI>
-        <LI><A href="###">计划项目</A>
-          <ul>
-            <LI><A href="###" onClick="addTab('项目申请', '/c/jsp/task/taskDeclare');">项目申请</A></LI>
-            <LI><A href="###" onClick="addTab('项目立项', '/c/jsp/task/taskApproval');">项目立项</A></LI>
-          </ul>
-        </LI>
-        <LI><A href="###">基础信息设置</A>
-		<ul>
-            <LI><A href="###" onClick="addTab('计划模板', '/c/jsp/template/templateSearch');">计划模板</A></LI>
-			<LI><A href="###" onClick="addTab('能力指标', '/c/jsp/ability/abilityIndexSearch');">能力指标</A></LI>
-			<LI><A href="###" onClick="addTab('计划类别扩展', '/c/jsp/ability/planTypeSearch');">计划类别扩展</A></LI>
-          </ul>
+		<LI><A href="###">系统管理</A>
+			<ul>
+	            <LI><A href="###" onClick="addTab('合作单位信息维护', '/html/pwassign/pwassign_probuild.html');">合作单位信息维护</A></LI>
+				<LI><A href="###" onClick="addTab('用户管理', '/html/pwassign/pwassign_usermanager.html');">用户管理</A></LI>
+				<LI><A href="###" onClick="addTab('组织管理', '/html/pwassign/pwassign_orzmanager.html');">组织管理</A></LI>
+	        </ul>
 		</LI>
-      </UL>
-    </LI>
-	<LI><A href="###">项目审计</A>
-		<ul>
-		<LI><A href="###"">项目结算</A>
-		<ul>
-			<LI><A href="###" onClick="addTab('结算审计申请', '/c/jsp/account/sendAccountBook1');">项目结算申请</A></LI>
-			<LI><A href="###" onClick="addTab('建设单位意见', '/c/jsp/account/sendAccountBook2');">建设单位意见</A></LI>
-			<LI><A href="###" onClick="addTab('选择审计单位', '/c/jsp/account/sendAccountBook3');">选择审计单位</A></LI>
-			<LI><A href="###" onClick="addTab('提交审计报告初稿', '/c/jsp/account/sendAccountBook4');">提交审计报告初稿</A></LI>
-			<LI><A href="###" onClick="addTab('确认审计报告初稿', '/c/jsp/account/sendAccountBook5');">确认审计报告初稿</A></LI>
-			<LI><A href="###" onClick="addTab('提交审计报告', '/c/jsp/account/sendAccountBook6');">提交审计报告</A></LI>
-			<LI><A href="###" onClick="addTab('确认审计报告', '/c/jsp/account/sendAccountBook7');">确认审计报告</A></LI>
-		</ul>
-		</LI>
-        <LI><A href="###"">项目决算</A>
-		<ul>
-			<LI><A href="###" onClick="addTab('决算审计申请', '/c/jsp/account/sendAuditBook1');">决算审计申请</A></LI>
-			<LI><A href="###" onClick="addTab('财务部审计', '/c/jsp/account/sendAuditBook2');">财务部审计</A></LI>
-			<LI><A href="###" onClick="addTab('决算选择审计单位', '/c/jsp/account/sendAuditBook3');">选择审计单位</A></LI>
-			<LI><A href="###" onClick="addTab('提交决算审计报告初稿', '/c/jsp/account/sendAuditBook4');">提交决算审计报告初稿</A></LI>
-			<LI><A href="###" onClick="addTab('确认决算审计报告初稿', '/c/jsp/account/sendAuditBook5');">确认决算审计报告初稿</A></LI>
-			<LI><A href="###" onClick="addTab('提交决算审计报告', '/c/jsp/account/sendAuditBook6');">提交决算审计报告</A></LI>
-			<LI><A href="###" onClick="addTab('确认决算审计报告', '/c/jsp/account/sendAuditBook7');">确认决算审计报告</A></LI>
-			<LI><A href="###" onClick="addTab('补充供应链订单号', '/c/jsp/account/sendAuditBook8');">补充供应链订单号</A></LI>
-		</ul>
-		</LI>
-		 <LI><A href="###"">审计查询</A>
-		 	<ul>
-		 		<LI><A href="###" onClick="addTab('项目结算查询', '/c/jsp/account/projectAccountSearch');">项目结算查询</A></LI>
-				<LI><A href="###" onClick="addTab('项目决算查询', '/c/jsp/account/projectAuditSearch');">项目决算查询</A></LI>
-				</ul>
-		</LI>
-        </ul>
-	</LI>
-	<LI><A href="###">系统管理</A>
-		<ul>
-            <LI><A href="###" onClick="addTab('合作单位信息维护', '/html/pwassign/pwassign_probuild.html');">合作单位信息维护</A></LI>
-			<LI><A href="###" onClick="addTab('用户管理', '/html/pwassign/pwassign_usermanager.html');">用户管理</A></LI>
-			<LI><A href="###" onClick="addTab('组织管理', '/html/pwassign/pwassign_orzmanager.html');">组织管理</A></LI>
-        </ul>
-	</LI>
-  </UL>
-  <BR style="CLEAR: left">
-</DIV>
-<div id="layout" class="easyui-layout"
-	style="width: 100%; height: 600px;">
+	  </UL>
+	  <BR style="CLEAR: left">
+	</DIV>
+<div region="north" border="false"  style="z-index:200; height: 88px;">
+	<TABLE id=Header border=0 cellSpacing=0 cellPadding=0 width="100%"
+		class="topinn">
+	  <TBODY>
+	    <TR class="topinnlogo">
+	      <TD width=500 align="left">这里可以填写你的Title</TD>
+	      <TD valign="bottom"><DIV id=menu>
+	          <UL>
+	            <LI><A href="###">功能地图</A></LI>
+	            <LI class=menuDiv></LI>
+	            <LI><A href="###">查看日志</A></LI>
+	            <LI class=menuDiv></LI>
+	            <LI><A href="###">重登录</A></LI>
+	            <LI class=menuDiv></LI>
+	            <LI><A href="###">退出</A></LI>
+	          </UL>
+	        </DIV></TD>
+	    </TR>
+	  </TBODY>
+	</TABLE>
+</div>
   <div id="westPanel" region="west" split="true" title="当前用户：DarkXie"
 	style="width: 160px; padding-left: 1px;">
     <div id="leftNav" class="easyui-accordion" fit="true">
@@ -209,14 +209,13 @@
       </div>
     </div>
   </div>
-  <div region="center" style="overflow: hidden">
-  	<div id="main" class="easyui-tabs" border="false">
-	    <div title="我的工作台" style="padding:2px">
+  <div region="center">
+  	<div id="main" class="easyui-tabs" fit="true" border="false">
+	    <div title="我的工作台" style="padding:2px" fit="true">
 	      <iframe id="home"	scrolling="auto" frameborder="0" src=""	style="width: 100%; height: 99%;"></iframe>
 	    </div>
     </div>
   </div>
-</div>
 </BODY>
 </HTML>
 <SCRIPT language=javascript>
@@ -267,14 +266,13 @@
 
 	$().ready(function() {
 		$("#home").attr('src', '/c/jsp/table');
-		$("#layout").layout("panel","west").panel({
-			onCollapse:function(){
-				$("#main").tabs("resize");
-			},
-			onExpand:function(){
-				$("#main").tabs("resize");
-			}
-		});
+		//$("#layout").layout("panel","west").panel({
+		//	onCollapse:function(){
+		//		$("#main").tabs("resize");
+		//	},
+		//	onExpand:function(){
+		//		$("#main").tabs("resize");
+		//	}
+		//});
 	});
-	$("#layout").css("height",document.documentElement.clientHeight - 92);
 </SCRIPT>
