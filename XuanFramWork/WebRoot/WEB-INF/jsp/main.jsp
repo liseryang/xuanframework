@@ -178,7 +178,7 @@
 </DIV>
 <div id="layout" class="easyui-layout"
 	style="width: 100%; height: 600px;">
-  <div region="west" split="true" title="当前用户：DarkXie"
+  <div id="westPanel" region="west" split="true" title="当前用户：DarkXie"
 	style="width: 160px; padding-left: 1px;">
     <div id="leftNav" class="easyui-accordion" fit="true">
       <div id="Favorites" title="我的收藏" icon="icon-ok" style="overflow: auto; padding: 2px;"> <a href="#" class="easyui-linkbutton" plain="true" icon="icon-save">定制我的收藏</a>
@@ -209,9 +209,11 @@
       </div>
     </div>
   </div>
-  <div id="main" region="center" class="easyui-tabs">
-    <div title="我的工作台" style="padding: 2px;">
-      <iframe id="home"	scrolling="auto" frameborder="0" src=""	style="width: 100%; height: 99%;"></iframe>
+  <div region="center" style="overflow: hidden">
+  	<div id="main" class="easyui-tabs" border="false">
+	    <div title="我的工作台" style="padding:2px">
+	      <iframe id="home"	scrolling="auto" frameborder="0" src=""	style="width: 100%; height: 99%;"></iframe>
+	    </div>
     </div>
   </div>
 </div>
@@ -265,7 +267,14 @@
 
 	$().ready(function() {
 		$("#home").attr('src', '/c/jsp/table');
-
-	})
+		$("#layout").layout("panel","west").panel({
+			onCollapse:function(){
+				$("#main").tabs("resize");
+			},
+			onExpand:function(){
+				$("#main").tabs("resize");
+			}
+		});
+	});
 	$("#layout").css("height",document.documentElement.clientHeight - 92);
 </SCRIPT>
