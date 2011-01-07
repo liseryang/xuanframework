@@ -12,7 +12,7 @@ function postDataAsync(formId, url, _callBack, async) {
 	else
 		url = url + "?";
 	url = url + "time=" + timestamp();
-	$.ajax( {
+	$.ajax({
 		type : "POST",
 		url : url,
 		dataType : "json",
@@ -32,7 +32,7 @@ function postDataWithoutForm(url, _callBack) {
 	else
 		url = url + "?";
 	url = url + "time=" + timestamp();
-	$.ajax( {
+	$.ajax({
 		type : "POST",
 		url : url,
 		dataType : "json",
@@ -137,83 +137,12 @@ function getPages(id) {
 // 生成Grid与查询交互的方法
 function getParams(id) {
 	if (!id)
-		return "";
-	var aaa = "";
-	aaa += "({";
-	// hql
-	aaa += "_" + id + "_hql" + ":'" + $('#_' + id + '_hql').val() + "'";
-
-	// where
-	aaa += ",";
-	aaa += "_" + id + "_where" + ":'" + $('#_' + id + '_where').val() + "'";
-
-	// group
-	aaa += ",";
-	aaa += "_" + id + "_groupby" + ":'" + $('#_' + id + '_groupby').val() + "'";
-
-	// order
-	aaa += ",";
-	aaa += "_" + id + "_orderby" + ":'" + $('#_' + id + '_orderby').val() + "'";
-
-	// idfield
-	aaa += ",";
-	aaa += "_" + id + "_idfield" + ":'" + $('#_' + id + '_idfield').val() + "'";
-
-	// search field
-	aaa += ",";
-	var field = [];
-	$("[name='_" + id + "_field']").each(function() {
-		field.push($(this).val());
-	});
-	aaa += "_" + id + "_field:[";
-	for (i = 0; i < field.length; i++) {
-		if (i > 0)
-			aaa += ",";
-		aaa += "'" + field[i] + "'";
-	}
-	aaa += "]";
-
-	// search type
-	aaa += ",";
-	var stype = [];
-	$("[name='_" + id + "_type']").each(function() {
-		stype.push($(this).val());
-	});
-	aaa += "_" + id + "_type" + ":[";
-	for (i = 0; i < stype.length; i++) {
-		if (i > 0)
-			aaa += ",";
-		aaa += "'" + stype[i] + "'";
-	}
-	aaa += "]";
-	// search operator
-	aaa += ",";
-	var operator = [];
-	$("[name='_" + id + "_operator']").each(function() {
-		operator.push($(this).val());
-	});
-	aaa += "_" + id + "_operator" + ":[";
-	for (i = 0; i < operator.length; i++) {
-		if (i > 0)
-			aaa += ",";
-		aaa += "'" + operator[i] + "'";
-	}
-	aaa += "]";
-	// search value
-	aaa += ",";
-	var values = [];
-	$("[name='_" + id + "_value']").each(function() {
-		values.push($(this).val());
-	});
-	aaa += "_" + id + "_value" + ":[";
-	for (i = 0; i < values.length; i++) {
-		if (i > 0)
-			aaa += ",";
-		aaa += "'" + values[i] + "'";
-	}
-	aaa += "]";
-	aaa += "})";
-	return eval(aaa);
+		return;
+	var form = document.getElementById("fm_" + id);
+	if (!form)
+		return;
+	else
+		return eval("(" + formToJSON(form) + ")");
 }
 
 // 列表的查询方法
@@ -228,19 +157,19 @@ function searchPage(id) {
 
 // 页面弹出窗口
 function showModal(title, url, icon, onClose, width, height) {
-	$('#popup').window( {
+	$('#popup').window({
 		title : "&nbsp;&nbsp;" + title
 	});
 	if (icon)
-		$('#popup').window( {
+		$('#popup').window({
 			iconCls : icon
 		});
 	if (width)
-		$('#popup').window( {
+		$('#popup').window({
 			width : width
 		});
 	if (height)
-		$('#popup').window( {
+		$('#popup').window({
 			height : height
 		});
 	$('#print_iframe').attr('src', url);
@@ -261,9 +190,10 @@ function showModal(title, url, icon, onClose, width, height) {
 function popWin(title, url, icon, width, height) {
 	var win = $('<div id="my_pop_win" class="messager-body"></div>').appendTo(
 			'body');
-	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:100%;"></iframe>';
+	var content = '<iframe id="pop_iframe" scrolling="auto" frameborder="0"  src="'
+			+ url + '" style="width:100%;height:100%;"></iframe>';
 	win.append(content);
-	win.window( {
+	win.window({
 		title : title,
 		width : width,
 		height : height,
@@ -314,4 +244,52 @@ function handRow(e, ttid, rowIndex) {
 		left : position.x,
 		top : position.y
 	});
+}
+// 把form元素转换为JSON
+function formToJSON(form) {
+	json = '{';
+	isarray = false;
+	for (i = 0, max = form.elements.length; i < max; i++) {
+		e = form.elements[i];
+		name = e.name;
+		if (name.substring(name.length - 2) == '[]') {
+			name = name.substring(0, name.length - 2);
+			lastarr = name;
+			if (isarray == false) {
+				json += '"' + name + '":[';
+			}
+			isarray = true;
+		} else {
+			if (isarray) {
+				json = json.substring(0, json.length - 1) + '],';
+			}
+			isarray = false;
+		}
+
+		switch (e.type) {
+		case 'checkbox':
+		case 'radio':
+			if (!e.checked) {
+				break;
+			}
+		case 'hidden':
+		case 'password':
+		case 'text':
+			if (!isarray) {
+				json += '"' + name + '":';
+			}
+			json += '"' + e.value.replace(new RegExp('(["\\\\])', 'g'), '\\$1')
+					+ '",';
+			break;
+
+		case 'button':
+		case 'file':
+		case 'image':
+		case 'reset':
+		case 'submit':
+		default:
+		}
+	}
+	;
+	return json.substring(0, json.length - 1) + '}';
 }
