@@ -28,10 +28,9 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * @see com.xuan.dao.IJpaDao#bulkupdate(java.lang.String,
 	 * java.lang.Object[])
 	 */
-	@SuppressWarnings("unchecked")
 	@Transactional()
 	public int bulkupdate(final String hql, final Object... params) {
-		return (Integer) getJpaTemplate().execute(new JpaCallback() {
+		return (Integer) getJpaTemplate().execute(new JpaCallback<Object>() {
 			public Object doInJpa(EntityManager em) throws PersistenceException {
 				Query query = em.createQuery(hql);
 				if (params != null) {
@@ -50,10 +49,9 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * 
 	 * @see com.xuan.dao.IJpaDao#clear()
 	 */
-	@SuppressWarnings("unchecked")
 	@Transactional()
 	public void clear() {
-		getJpaTemplate().execute(new JpaCallback() {
+		getJpaTemplate().execute(new JpaCallback<Object>() {
 			public Object doInJpa(EntityManager em) throws PersistenceException {
 				em.flush();
 				em.clear();
@@ -85,7 +83,7 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * 
 	 * @see com.xuan.dao.IJpaDao#find(java.lang.String, java.lang.Object[])
 	 */
-	@SuppressWarnings( { "unchecked", "hiding" })
+	@SuppressWarnings({ "hiding", "unchecked" })
 	@Transactional(readOnly = true)
 	public <E> List<E> find(String hql, Object... parameters) {
 		return getJpaTemplate().find(hql, parameters);
@@ -96,9 +94,8 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * 
 	 * @see com.xuan.dao.IJpaDao#find(java.lang.String, java.util.List)
 	 */
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<?> find(final String hql, final List params) {
+	public List<?> find(final String hql, final List<?> params) {
 		return find(hql, params, -1, -1);
 	}
 
@@ -108,29 +105,30 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * @see com.xuan.dao.IJpaDao#find(java.lang.String, java.util.List, int,
 	 * int)
 	 */
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<?> find(final String hql, final List params,
+	public List<?> find(final String hql, final List<?> params,
 			final int pageIndex, final int pageSize) {
-		List<?> result = getJpaTemplate().executeFind(new JpaCallback() {
+		List<?> result = getJpaTemplate().executeFind(
+				new JpaCallback<Object>() {
 
-			public Object doInJpa(EntityManager em) throws PersistenceException {
-				Query query = em.createQuery(hql);
-				if (params != null) {
-					int i = 0;
-					for (Object param : params) {
-						query.setParameter(++i, param);
+					public Object doInJpa(EntityManager em)
+							throws PersistenceException {
+						Query query = em.createQuery(hql);
+						if (params != null) {
+							int i = 0;
+							for (Object param : params) {
+								query.setParameter(++i, param);
+							}
+						}
+						if (pageIndex > 0) {
+							query.setFirstResult((pageIndex - 1) * pageSize);
+						}
+						if (pageSize > 0) {
+							query.setMaxResults(pageSize);
+						}
+						return query.getResultList();
 					}
-				}
-				if (pageIndex > 0) {
-					query.setFirstResult((pageIndex - 1) * pageSize);
-				}
-				if (pageSize > 0) {
-					query.setMaxResults(pageSize);
-				}
-				return query.getResultList();
-			}
-		});
+				});
 		return result;
 	}
 
@@ -138,7 +136,7 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	@Transactional(readOnly = true)
 	public <T> List<T> find(String hql, int pageIndex, int pageSize,
 			Object... parameters) {
-		List params = new ArrayList();
+		List<Object> params = new ArrayList<Object>();
 		for (Object param : parameters) {
 			params.add(param);
 		}
@@ -151,13 +149,13 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 		return getJpaTemplate().find(t, id);
 	}
 
-	@SuppressWarnings( { "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked", "hiding" })
 	@Transactional(readOnly = true)
 	public <E> List<E> findByNamedQuery(String queryName, Object... parameters) {
 		return getJpaTemplate().findByNamedQuery(queryName, parameters);
 	}
 
-	@SuppressWarnings( { "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked", "hiding" })
 	@Transactional(readOnly = true)
 	public <E> List<E> findByNamedQueryAndNamedParams(final String queryName,
 			final Map<String, ?> params) {
@@ -214,11 +212,11 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * @see com.xuan.dao.IJpaDao#findByNativeSQL(java.lang.String,
 	 * java.util.List)
 	 */
-	@SuppressWarnings( { "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked", "hiding" })
 	@Transactional(readOnly = true)
 	public <E> List<E> findByNativeSQL(final String sql,
 			final List<?> parameters) {
-		return getJpaTemplate().executeFind(new JpaCallback() {
+		return getJpaTemplate().executeFind(new JpaCallback<Object>() {
 			public List<E> doInJpa(EntityManager em)
 					throws PersistenceException {
 				Query query = em.createNativeQuery(sql);
@@ -255,11 +253,10 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Transactional()
 	public void persistAll(final Collection<?> c) {
 		if (c != null) {
-			getJpaTemplate().execute(new JpaCallback() {
+			getJpaTemplate().execute(new JpaCallback<Object>() {
 				public Object doInJpa(EntityManager em)
 						throws PersistenceException {
 					for (int i = 0; i < c.size(); i++) {
@@ -449,8 +446,7 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 */
 	@Transactional()
 	public long prepareCall(String sql, List<?> args) {
-		// TODO Auto-generated method stub
-		return 0;
+		return prepareCall(sql, args);
 	}
 
 	/*

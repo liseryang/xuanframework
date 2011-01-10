@@ -22,11 +22,11 @@ public class PropertiesUtil {
 	 * @param from
 	 * @param to
 	 */
-	@SuppressWarnings("unchecked")
 	public static void copyProperties(Properties from, Properties to) {
 		Iterator<?> itr = from.entrySet().iterator();
 
 		while (itr.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry entry = (Map.Entry) itr.next();
 
 			to.setProperty((String) entry.getKey(), (String) entry.getValue());
@@ -39,17 +39,17 @@ public class PropertiesUtil {
 	 * @param map
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public static Properties fromMap(Map map) {
+	public static Properties fromMap(Map<?, ?> map) {
 		if (map instanceof Properties) {
 			return (Properties) map;
 		}
 
 		Properties p = new Properties();
 
-		Iterator itr = map.entrySet().iterator();
+		Iterator<?> itr = map.entrySet().iterator();
 
 		while (itr.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry entry = (Map.Entry) itr.next();
 
 			String key = (String) entry.getKey();
@@ -69,13 +69,13 @@ public class PropertiesUtil {
 	 * @param p
 	 * @param map
 	 */
-	@SuppressWarnings("unchecked")
-	public static void fromProperties(Properties p, Map map) {
+	public static void fromProperties(Properties p, Map<Object, Object> map) {
 		map.clear();
 
-		Iterator itr = p.entrySet().iterator();
+		Iterator<?> itr = p.entrySet().iterator();
 
 		while (itr.hasNext()) {
+			@SuppressWarnings("rawtypes")
 			Map.Entry entry = (Map.Entry) itr.next();
 
 			map.put(entry.getKey(), entry.getValue());
@@ -153,8 +153,7 @@ public class PropertiesUtil {
 	 * @param map
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public static String list(Map map) {
+	public static String list(Map<?, ?> map) {
 		Properties props = fromMap(map);
 		ByteArrayOutputStream bam = new ByteArrayOutputStream();
 		PrintStream ps = new PrintStream(bam);
@@ -170,8 +169,7 @@ public class PropertiesUtil {
 	 * @param map
 	 * @param out
 	 */
-	@SuppressWarnings("unchecked")
-	public static void list(Map map, PrintStream out) {
+	public static void list(Map<?, ?> map, PrintStream out) {
 		Properties props = fromMap(map);
 
 		props.list(out);
@@ -183,8 +181,7 @@ public class PropertiesUtil {
 	 * @param map
 	 * @param out
 	 */
-	@SuppressWarnings("unchecked")
-	public static void list(Map map, PrintWriter out) {
+	public static void list(Map<?, ?> map, PrintWriter out) {
 		Properties props = fromMap(map);
 
 		props.list(out);
@@ -196,11 +193,10 @@ public class PropertiesUtil {
 	 * @param p
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public static String toString(Properties p) {
 		StringBuffer sm = new StringBuffer();
 
-		Enumeration enu = p.propertyNames();
+		Enumeration<?> enu = p.propertyNames();
 
 		while (enu.hasMoreElements()) {
 			String key = (String) enu.nextElement();
@@ -219,10 +215,9 @@ public class PropertiesUtil {
 	 * 
 	 * @param p
 	 */
-	@SuppressWarnings("unchecked")
 	public static void trimKeys(Properties p) {
 		
-		Enumeration enu = p.propertyNames();
+		Enumeration<?> enu = p.propertyNames();
 		while (enu.hasMoreElements()) {
 			String key = (String) enu.nextElement();
 			String value = p.getProperty(key);

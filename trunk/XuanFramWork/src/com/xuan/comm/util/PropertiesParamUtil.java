@@ -5,7 +5,7 @@ import java.util.Properties;
 import javax.servlet.ServletRequest;
 
 /**
- * Requestp配合Properties处理
+ * Request配合Properties处理
  * 
  * @author DarkXie
  * 

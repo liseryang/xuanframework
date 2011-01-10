@@ -45,7 +45,7 @@ public class GridColumnTag extends BodyTagSupport {
 						.getAttribute(TagGlobalNames.TAG_GRID_OBJECT);
 				gpb.getFrozenColumns().add(cpb);
 			} else {
-				List tmp = (List)req.getAttribute(TagGlobalNames.TAG_COLSWRAP_OBJ);
+				List<ColumnPropertiesBean> tmp = (List<ColumnPropertiesBean>)req.getAttribute(TagGlobalNames.TAG_COLSWRAP_OBJ);
 				tmp.add(cpb);
 //				req.setAttribute(TagGlobalNames.TAG_COLSWRAP_OBJ,
 //						((ArrayList<ColumnPropertiesBean>) req

@@ -75,9 +75,10 @@ public class Grid2Tag extends BodyTagSupport {
 			throw new JspException(e);
 		}
 		// 把Grid写出操作全部扔到最后完成
+		_log.debug(grp);
 		Map<String, GridPropertiesBean> ids = null;
 		if (req.getAttribute(TagGlobalNames.TAG_GRIDS) == null) {
-			ids = new HashMap();
+			ids = new HashMap<String, GridPropertiesBean>();
 			ids.put(id, grp);
 		} else {
 			ids = (Map<String, GridPropertiesBean>) req
