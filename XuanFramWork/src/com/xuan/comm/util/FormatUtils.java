@@ -38,66 +38,6 @@ public class FormatUtils {
 	}
 
 	/**
-	 * 获得yyyy/MM/dd
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate2(Date myDate) {
-		return formatDateByFormatStr(myDate, "yyyy/MM/dd");
-	}
-
-	/**
-	 * 获得MM-dd HH:mm
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate3(Date myDate) {
-		return formatDateByFormatStr(myDate, "MM-dd HH:mm");
-	}
-
-	/**
-	 * 获得yyyyMMdd日期
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate4(Date myDate) {
-		return formatDateByFormatStr(myDate, "yyyyMMdd");
-	}
-
-	/**
-	 * 获得yyyy-MM-dd日期
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate5(Date myDate) {
-		return formatDateByFormatStr(myDate, "yyyy-MM-dd");
-	}
-
-	/**
-	 * 获得yyyy-MM-dd HH:mm日期
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate6(Date myDate) {
-		return formatDateByFormatStr(myDate, "yyyy-MM-dd HH:mm");
-	}
-
-	/**
-	 * 获得yyyy年MM月dd日
-	 * 
-	 * @param myDate
-	 * @return
-	 */
-	public static String formatDate7(Date myDate) {
-		return formatDateByFormatStr(myDate, "yyyy年MM月dd日");
-	}
-
-	/**
 	 * 根据格式化串格式化日期 formatDateByFormatStr(myDate, "yyyy-MM-dd HH:mm");
 	 * 
 	 * @param myDate
@@ -128,18 +68,18 @@ public class FormatUtils {
 	}
 
 	/**
-	 * 格式化float类型
+	 * 格式化float类型，只有10位精度
 	 * 
 	 * @param f
 	 * @param formatStr
 	 * @return
 	 */
 	public static String formatFloat(float f, String formatStr) {
-		return formatFloat(f, formatStr);
+		return formatFloat(new Float(f), formatStr);
 	}
 
 	/**
-	 * 格式化float类型
+	 * 格式化float类型，只有10位精度
 	 * 
 	 * @param f
 	 * @param formatStr

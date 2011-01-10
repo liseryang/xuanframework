@@ -24,6 +24,7 @@ public class BodyTag extends BodyTagSupport {
 	private String _endPage;
 
 	public int doStartTag() throws JspException {
+		_log.debug("body begin");
 		ServletRequest req = this.pageContext.getRequest();
 
 		req.setAttribute(TagGlobalNames.TAG_PAGE_BASE_PATH, TagUtils
@@ -49,15 +50,18 @@ public class BodyTag extends BodyTagSupport {
 			ServletRequest req = this.pageContext.getRequest();
 			TagUtils.include(this.pageContext, getStartPage());
 
-//			req.removeAttribute(TagGlobalNames.TAG_BODY_TITLE);
-//			req.removeAttribute(TagGlobalNames.TAG_BODY_NAV);
-//			req.removeAttribute(TagGlobalNames.TAG_BODY_ICON);
+			req.removeAttribute(TagGlobalNames.TAG_BODY_TITLE);
+			req.removeAttribute(TagGlobalNames.TAG_BODY_NAV);
+			req.removeAttribute(TagGlobalNames.TAG_BODY_ICON);
+			
 			this.pageContext.getOut().print(getBodyContent().getString());
 			TagUtils.include(this.pageContext, getEndPage());
+			
 
 		} catch (Exception e) {
 			throw new JspException(e);
 		}
+		_log.debug("body end");
 		return EVAL_PAGE;
 	}
 

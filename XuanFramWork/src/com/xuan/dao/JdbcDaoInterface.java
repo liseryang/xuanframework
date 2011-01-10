@@ -13,7 +13,7 @@ public interface JdbcDaoInterface  {
 
 	int execute(String sql, Object... args);
 
-	public <T> T query(String sql,ResultSetExtractor rch);
+	public <T> T query(String sql,ResultSetExtractor<?> rch);
 
 	
 	void query(RowCallbackHandler rowCallbackHandler, int resultSetType,

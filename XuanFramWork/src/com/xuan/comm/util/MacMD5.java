@@ -29,9 +29,4 @@ public class MacMD5 {
 		}
 		return hs;
 	}
-
-	public static void main(String[] args) {
-		MacMD5 md5 = new MacMD5();
-//		System.out.println(md5.CalcMD5("hrm2admin"));
-	}
 }

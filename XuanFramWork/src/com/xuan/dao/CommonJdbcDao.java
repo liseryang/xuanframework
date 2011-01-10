@@ -3,7 +3,6 @@ package com.xuan.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +25,7 @@ public class CommonJdbcDao extends JdbcDaoSupport implements JdbcDaoInterface {
 	
 	@SuppressWarnings("unchecked")
 	public List<DynaBean> queryDynaBeans(String sql,Object... args){
-		return (List<DynaBean>) getJdbcTemplate().query(sql, args, new ResultSetExtractor(){
+		return (List<DynaBean>) getJdbcTemplate().query(sql, args, new ResultSetExtractor<Object>(){
 			
 			public Object extractData(ResultSet rs) throws SQLException,
 					DataAccessException {
@@ -40,7 +39,8 @@ public class CommonJdbcDao extends JdbcDaoSupport implements JdbcDaoInterface {
 		return getJdbcTemplate().update(sql, args);		
 	}
 	
-	public <T> T query(String sql,ResultSetExtractor rch){		
+	@SuppressWarnings("unchecked")
+	public <T> T query(String sql,ResultSetExtractor<?> rch){		
 		return (T) getJdbcTemplate().query(sql, rch);
 	}
 	
@@ -97,10 +97,9 @@ public class CommonJdbcDao extends JdbcDaoSupport implements JdbcDaoInterface {
 		return queryForMap;
 	}
 
-	@SuppressWarnings("unchecked")
 	
 	public void excuteBatch(String sql, final List<Object[]> updateParameters) {
-		getJdbcTemplate().execute(sql, new PreparedStatementCallback() {
+		getJdbcTemplate().execute(sql, new PreparedStatementCallback<Object>() {
 			
 			public Object doInPreparedStatement(PreparedStatement ps)
 					throws SQLException, DataAccessException {

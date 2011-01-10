@@ -34,12 +34,11 @@ public class Randomizer extends Random {
 	 * @param size
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public int[] nextInt(int n, int size) {
 		if (size > n) {
 			size = n;
 		}
-		Set set = new LinkedHashSet();
+		Set<Integer> set = new LinkedHashSet<Integer>();
 		for (int i = 0; i < size; i++) {
 			while (true) {
 				Integer value = new Integer(nextInt(n));
@@ -50,7 +49,7 @@ public class Randomizer extends Random {
 			}
 		}
 		int[] array = new int[set.size()];
-		Iterator itr = set.iterator();
+		Iterator<Integer> itr = set.iterator();
 		for (int i = 0; i < array.length; i++) {
 			array[i] = ((Integer) itr.next()).intValue();
 		}
@@ -100,8 +99,7 @@ public class Randomizer extends Random {
 	 * 
 	 * @param list
 	 */
-	@SuppressWarnings("unchecked")
-	public void randomize(List list) {
+	public void randomize(List<Object> list) {
 		int size = list.size();
 
 		for (int i = 0; i <= size; i++) {
@@ -150,10 +148,4 @@ public class Randomizer extends Random {
 	}
 
 	private static Randomizer _instance = new Randomizer();
-
-	public static void main(String[] args) {
-		String str = "abcdefghijk";
-//		System.out.println(Randomizer.getInstance().randomize(str));
-	}
-
 }

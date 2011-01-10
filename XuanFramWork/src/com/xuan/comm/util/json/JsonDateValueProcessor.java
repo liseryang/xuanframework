@@ -1,11 +1,11 @@
 package com.xuan.comm.util.json;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsonValueProcessor;
+
+import com.xuan.comm.util.FormatUtils;
 
 public class JsonDateValueProcessor implements JsonValueProcessor {
 
@@ -58,9 +58,7 @@ public class JsonDateValueProcessor implements JsonValueProcessor {
 	private Object process(Object value) {
 		try {
 			if (value instanceof Date) {
-				SimpleDateFormat sdf = new SimpleDateFormat(datePattern,
-						Locale.UK);
-				return sdf.format((Date) value);
+				return FormatUtils.formatDateByFormatStr(value, datePattern);
 			}
 			return value == null ? "" : value.toString();
 		} catch (Exception e) {
