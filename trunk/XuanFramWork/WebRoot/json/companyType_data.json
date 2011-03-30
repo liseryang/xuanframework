@@ -1,10 +1,10 @@
 [{
 	"id":-1,
-	"text":"---未选择---",
-	"selected":true
+	"text":"---未选择---"
 },{
 	"id":1,
-	"text":"TD公司"
+	"text":"TD公司",
+	"selected":true
 },{
 	"id":2,
 	"text":"有限公司"

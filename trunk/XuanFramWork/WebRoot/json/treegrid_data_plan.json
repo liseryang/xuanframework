@@ -1,8 +1,20 @@
 ﻿[
-{ "id":1, "code":"01", "name":"零星购置", "addr":"", "col4":"", 
-	"children":[{ "id":2, "code":"0101", "name":"办公零购", "addr":"", "checked":true},
-							{ "id":3, "code":"0102", "name":"渠道零购", "addr":"", "checked":true 
-							},{ "id":3, "code":"0102", "name":"车辆购置", "addr":"", "checked":true 
-							}] 
+{"id":"pc","code":"pc","name":"计划类别","addr":"","col4":"",
+	"children":[{ "id":"pc_01", "code":"pc_01", "name":"网络建设", "addr":""},
+				{ "id":"pc_02", "code":"pc_02", "name":"传送网", "addr":""},
+				{ "id":"pc_03", "code":"pc_03", "name":"新技术业务", "addr":""},
+				{ "id":"pc_04", "code":"pc_04", "name":"IT支撑系统", "addr":""},
+				{ "id":"pc_05", "code":"pc_05", "name":"局方土建", "addr":""},
+				{ "id":"pc_06", "code":"pc_06", "name":"其他", "addr":""}
+				]
+},
+{"id":"epc","code":"epc","name":"计划扩展类别","addr":"","col4":"",
+	"children":[{ "id":1, "code":"01", "name":"零星购置", "addr":"", "col4":"", 
+				"children":[{ "id":2, "code":"0101", "name":"办公零购", "addr":""},
+							{ "id":3, "code":"0102", "name":"渠道零购", "addr":"" 
+							},{ "id":3, "code":"0102", "name":"车辆购置", "addr":""}
+							]}
+				]
 }
+
 ]
