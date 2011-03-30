@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -38,9 +40,8 @@ public class Pagination {
 		this.rowSet = rowSet;
 	}
 
-	@Override
 	public String toString() {
-		return "Pagination [rowSet=" + rowSet + ", total=" + total + "]";
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 	public String getGridJSON() {

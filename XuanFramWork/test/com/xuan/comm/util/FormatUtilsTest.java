@@ -1,5 +1,6 @@
 package com.xuan.comm.util;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -41,6 +42,10 @@ public class FormatUtilsTest extends TestCase {
 	 *            String[]
 	 */
 	public static void main(String[] args) {
+		Double aa = 124.955;
+		DecimalFormat df = new DecimalFormat("0,000.00");
+		System.out.println(df.format(aa));
+		System.out.println(System.currentTimeMillis());
 	}
 
 	/**

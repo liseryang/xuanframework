@@ -17,27 +17,27 @@ public class GetterUtil {
 
 	public static final Date DEFAULT_DATE = null;
 
-	public static final Date[] DEFAULT_DATE_VALUES = new Date[0];
+	public static final Date[] DEFAULT_DATE_VALUES = null;
 
 	public static final double DEFAULT_DOUBLE = 0.0;
 
-	public static final double[] DEFAULT_DOUBLE_VALUES = new double[0];
+	public static final double[] DEFAULT_DOUBLE_VALUES = {0};
 
 	public static final float DEFAULT_FLOAT = 0;
 
-	public static final float[] DEFAULT_FLOAT_VALUES = new float[0];
+	public static final float[] DEFAULT_FLOAT_VALUES = {0};
 
 	public static final int DEFAULT_INTEGER = 0;
 
-	public static final int[] DEFAULT_INTEGER_VALUES = new int[0];
+	public static final int[] DEFAULT_INTEGER_VALUES ={0};
 
 	public static final long DEFAULT_LONG = 0;
 
-	public static final long[] DEFAULT_LONG_VALUES = new long[0];
+	public static final long[] DEFAULT_LONG_VALUES = {0};
 
 	public static final short DEFAULT_SHORT = 0;
 
-	public static final short[] DEFAULT_SHORT_VALUES = new short[0];
+	public static final short[] DEFAULT_SHORT_VALUES = {0};
 
 	public static final String DEFAULT_STRING = StringPool.BLANK;
 
