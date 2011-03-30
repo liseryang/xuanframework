@@ -40,7 +40,7 @@
 				]],
 				toolbar:[{text:'增加',
 						iconCls:'icon-add',
-						handler:function(){popWin('增加能力指标', '/c/jsp/ability/abilityIndexAdd', 'icon-search', 360, 200);}
+						handler:function(){append();}
 				},'-'],
 				onContextMenu: function(e,row){
 					e.preventDefault();
@@ -55,7 +55,7 @@
 		});
 		var codeIndex = 1000;
 		function append(){
-			popWin('增加能力指标', '/c/jsp/ability/abilityIndexAdd', 'icon-search', 360, 200);
+			popWin('增加能力指标', '/c/jsp/ability/abilityIndexAdd', 'icon-search', 360, 300);
 		}
 		function remove(){
 			var node = $('#test').treegrid('getSelected');

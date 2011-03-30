@@ -43,5 +43,6 @@
       <x:col width="100" title="计划项目经理" field="programManager"></x:col>
     </x:colsWrap>
 	<x:grm iconCls="icon-ok" handler="window.location.href='/c/jsp/programManagement/editTaskPlan';" text="编辑"/>
+	<x:grm iconCls="icon-search" handler="window.location.href='/c/jsp/programManagement/viewTaskPlan';" text="查看"/>
   </x:grid>
 </x:tbody>

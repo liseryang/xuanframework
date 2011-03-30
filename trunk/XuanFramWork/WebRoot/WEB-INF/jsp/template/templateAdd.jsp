@@ -5,21 +5,16 @@
 	response.setDateHeader("Expires", -10);
 %>
 
-<x:tbody title="计划模板" iconCls="icon-dot">
-  <div id="p1" class="easyui-panel" title="基本信息" icon="icon-edit" style="padding:2px; margin-bottom:2px;background:#fafafa;">
+<x:tbody title="计划模板定义" iconCls="icon-dot">
+  <div id="p0" class="easyui-panel" title="基本信息" icon="icon-edit" style="fit:true;padding:2px; margin-bottom:2px;background:#fafafa;">
     <table class="userInput_table" cellspacing="0" cellpadding="0" border="1" style="margin: 1 auto; width: 100%;">
       <tr>
         <td class="td_title">模板编号*</td>
-        <td class="td_context"><input type="text" name="receipt_memo_number_condition" id="receipt_memo_number_condition"/>
-        </td>
+        <td class="td_context"><input name="receipt_memo_number_condition" type="text" id="receipt_memo_number_condition" value="123456"/>        </td>
         <td class="td_title">模板名称*</td>
-        <td class="td_context"><input type="text" name="receipt_memo_number_condition3" id="receipt_memo_number_condition3"/></td>
-        <td class="td_title">模板类型*</td>
-        <td class="td_context"><select class="easyui-combobox" name="select2">
-            <option>---未选择---</option>
-            <option>动态行</option>
-            <option>固定行</option>
-          </select></td>
+        <td class="td_context"><input name="receipt_memo_number_condition3" type="text" id="receipt_memo_number_condition3" value="2010年地市填报模板"/></td>
+        <td class="td_title">是否新版本/版本号</td>
+        <td class="td_context">是/1 <a href="#" class="easyui-linkbutton" iconcls="icon-analysis" plain="true">生成新版本</a></td>
       </tr>
       <tr>
         <td height="21" class="td_title">公司类型*</td>
@@ -27,51 +22,31 @@
         <td class="td_title">专业类型*</td>
         <td class="td_context"><select class="easyui-combobox" name="select">
             <option>---未选择---</option>
-            <option>数据业务网</option>
+            <option selected="selected">数据业务网</option>
             <option>IT项目建设</option>
           </select></td>
-        <td class="td_title">启用状态*</td>
-        <td class="td_context"><select class="easyui-combobox" name="select3">
-            <option>---未选择---</option>
-            <option>启用</option>
-            <option>禁用</option>
-          </select></td>
+        <td class="td_title">是否通过验证</td>
+        <td class="td_context">否</td>
       </tr>
       <tr>
         <td height="21" class="td_title">启用日期从</td>
-        <td colspan="3" class="td_context"><input name="Input42" class="easyui-datebox" id="Input4" />
+        <td class="td_context"><input name="Input42" class="easyui-datebox" id="Input4" size="10"/>
           至
-          <input name="Input3" class="easyui-datebox" id="Input3" /></td>
-        <td class="td_title">创建人</td>
-        <td class="td_context"><input type="text" name="Input2" id="Input2" /></td>
-      </tr>
-      <tr>
-        <td height="21" class="td_title">模板文件</td>
-        <td class="td_context"><input type="file" name="file" /></td>
-        <td class="td_title">计划所属年度</td>
-        <td class="td_context"><select name="select10">
-            <option selected="selected">2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
-            <option>2025</option>
-            <option>2026</option>
-            <option>2027</option>
-            <option>2028</option>
-          </select>
-        </td>
-        <td class="td_title">创建时间</td>
-        <td class="td_context"><input name="Input" class="easyui-datebox" id="Input" /></td>
+          <input name="Input3" class="easyui-datebox" id="Input3"  size="10"/></td>
+        <td class="td_title">启用状态*</td>
+        <td class="td_context"><label>
+          <input type="radio" name="radiobutton" value="radiobutton" checked="checked"/>
+          是</label>
+          <label>
+          <input type="radio" name="radiobutton" value="radiobutton" />
+          否</label></td>
+        <td class="td_title">是否生成项目包</td>
+        <td class="td_context"><label>
+          <input type="radio" name="radiobutton2" value="radiobutton2" checked="checked"/>
+          是</label>
+          <label>
+          <input type="radio" name="radiobutton2" value="radiobutton2" />
+          否</label></td>
       </tr>
       <tr>
         <td height="21" class="td_title">备注</td>
@@ -80,182 +55,229 @@
       </tr>
     </table>
   </div>
-  <div id="p2" class="easyui-panel" title="类别定义" icon="icon-analysis" collapsible="true" style="padding:2px; margin-bottom:2px;background:#fafafa;">
-    <table class="userInput_table" cellspacing="0" cellpadding="0" border="1" style="margin: 1 auto; width: 100%;">
-      <tr>
-        <td class="td_title" width="10%">计划类别*</td>
-        <td class="td_context"><label><input name="" type="checkbox" value="" />网络建设</label>&nbsp;
-          <label><input name="" type="checkbox" value="" />传送网</label>&nbsp;
-          <label><input name="" type="checkbox" value="" />新技术新业务</label>&nbsp;
-          <label><input name="" type="checkbox" value="" />IT支撑系统</label>&nbsp;
-          <label><input name="" type="checkbox" value="" />局房土建</label>&nbsp;
-          <label><input name="" type="checkbox" value="" />其他</label></td>
-      </tr>
-    </table>
-	<table id="planType">
+  <table id="planType">
   </table>
-  </div>
-  <div id="p3" class="easyui-panel" title="模板数据映射" icon="icon-analysis" collapsible="true" style="padding:2px; margin-bottom:2px;background:#fafafa;">
-    <table width="1044" class="easyui-datagrid" id="tt" style="width:auto; height:auto">
+  <div id="p2" class="easyui-panel" title="模板数据映射" icon="icon-analysis" collapsible="true" style="padding:2px; margin-bottom:2px;background:#fafafa;">
+    <p>模板文件：
+      <input name="" type="file" />
+      模板.xls（上传后生成以下表格中的信息）</p>
+    <table class="easyui-datagrid" id="tt2" fit="true">
       <thead>
         <tr>
-          <th width="82" field="name1"><strong>行号</strong></th>
-          <th width="81" field="name2"><strong>列号</strong></th>
-          <th width="107" field="name99">名称</th>
-          <th width="107" field="name3"><strong>数据类型</strong></th>
-          <th width="129" field="name4"><strong>长度</strong></th>
-          <th width="127" field="name5"><strong>默认值</strong></th>
-          <th width="192" field="name51"><strong>说明</strong></th>
-          <th width="73" field="name6"><strong>是否必填</strong></th>
+          <th width="34" field="name2"><strong>列号</strong></th>
+          <th width="193" field="name99"><strong>名称</strong></th>
+          <th width="77" field="name3"><strong>数据类型</strong></th>
+          <th width="77" field="name4"><strong>长度</strong></th>
+          <th width="66" field="name5"><strong>是否必填</strong></th>
+          <th width="77" field="name51"><strong>是否合计列</strong></th>
+          <th width="77" field="name52"><strong>是否分组列</strong></th>
+          <th width="174" field="name53"><strong>说明</strong></th>
         </tr>
       </thead>
       <tbody>
-        
         <tr>
-          <td><input name="textfield4" type="text" value="2" size="4" /></td>
-          <td><input name="textfield23" type="text" value="2" size="4" /></td>
+          <td>1</td>
           <td>MIS编号</td>
           <td><select name="select8">
               <option>文本</option>
               <option selected="selected">数字</option>
             </select></td>
           <td><input name="textfield225" type="text" value="10.2" size="10" /></td>
-          <td><input name="textfield222" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield32" /></td>
-          <td><select name="select5">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="3" size="4" /></td>
+          <td>2</td>
           <td>项目名称</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox2" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox2" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox2" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="4" size="4" /></td>
+          <td>3</td>
           <td>投资额</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox3" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox3" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox3" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="5" size="4" /></td>
+          <td>4</td>
           <td>项目累计支出</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox4" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox4" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox4" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="6" size="4" /></td>
+          <td>5</td>
           <td>至2010年底累计开支</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox5" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox5" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox5" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="7" size="4" /></td>
+          <td>6</td>
           <td>2011年预计支出</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox6" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox6" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox6" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="8" size="4" /></td>
+          <td>7</td>
           <td>至2010年已转资</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox7" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox7" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox7" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
         <tr>
-          <td><input name="textfield5" type="text" value="2" size="4" /></td>
-          <td><input name="textfield24" type="text" value="9" size="4" /></td>
+          <td>8</td>
           <td>2011年预计转资</td>
           <td><select name="select9">
               <option>文本</option>
               <option>数字</option>
             </select></td>
           <td><input name="textfield2242" type="text" value="100" size="10" /></td>
-          <td><input name="textfield223" type="text" size="10" /></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox8" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox8" value="checkbox" />
+            </div></td>
+          <td><div align="center">
+              <input type="checkbox" name="checkbox8" value="checkbox" />
+            </div></td>
           <td><input type="text" name="textfield33" /></td>
-          <td><select name="select6">
-              <option>是</option>
-              <option>否</option>
-            </select></td>
         </tr>
       </tbody>
     </table>
   </div>
   <table id="test">
   </table>
+  <div id="p4" class="easyui-panel" title="模板汇总定义" icon="icon-analysis" collapsible="true" style="padding:2px; margin-bottom:2px;background:#fafafa;">
+  <p><a href="#" class="easyui-linkbutton" iconcls="icon-add" plain="true" onclick="editSummary();">增加</a></p>
+    <table width="686" class="easyui-datagrid" id="tt" fit="true">
+      <thead>
+        <tr>
+          <th width="41" field="name2"><strong>序号</strong></th>
+          <th width="276" field="name99"><strong>名称</strong></th>
+          <th width="265" field="name3"><strong>说明</strong></th>
+          <th width="84" field="name53"><strong>操作</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div align="right">1</div></td>
+          <td>按计划类别汇总</td>
+          <td>无</td>
+          <td><div align="center"><a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="editSummary();"></a>&nbsp;<a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"  onclick="removeSummary();"></a></div></td>
+        </tr>
+        <tr>
+          <td><div align="right">2</div></td>
+          <td>按建设单位汇总</td>
+          <td>无</td>
+          <td><div align="center"><a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="editSummary();"></a>&nbsp;<a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"  onclick="removeSummary();"></a></div></td>
+        </tr>
+        <tr>
+          <td><div align="right">3</div></td>
+          <td>按建设单位与计划类别汇总</td>
+          <td>无</td>
+          <td><div align="center"><a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="editSummary();"></a>&nbsp;<a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true"  onclick="removeSummary();"></a></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </x:tbody>
 <script>
 		$(function(){
 			$('#test').treegrid({
 				title:'能力指标',
-				iconCls:'icon-save',
+				iconCls:'icon-analysis',
 				width:'auto',
 				height:'auto',
+				collapsible:true,
 				nowrap: false,
 				rownumbers: false,
 				animate:true,
-				collapsible:false,
+				collapsible:true,
 				url:"/json/treegrid_data.json",
 				idField:'code',
 				treeField:'code',
@@ -277,14 +299,14 @@
 		});
 		$(function(){
 			$('#planType').treegrid({
-				title:'扩展计划类别',
-				iconCls:'icon-save',
+				title:'计划类别定义',
+				iconCls:'icon-analysis',
 				width:'auto',
 				height:'auto',
+				collapsible:true,
 				nowrap: false,
 				rownumbers: false,
 				animate:true,
-				collapsible:false,
 				url:"/json/treegrid_data_plan.json",
 				idField:'code',
 				treeField:'code',
@@ -304,4 +326,10 @@
 				
 			});
 		});
+		function editSummary(){
+			popWin('维护模板汇总定义', '/c/jsp/template/templateSummaryAdd', 'icon-search', 616, 440);
+		}
+		function removeSummary(){
+			confirm('你是否要删除该汇总定义？');
+		}
 </script>

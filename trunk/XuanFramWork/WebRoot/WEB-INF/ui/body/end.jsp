@@ -9,7 +9,7 @@
 <%} %>
 </body>
 </html>
-<script><!--
+<script>
 $().ready(function(){
 });
 <%
@@ -238,4 +238,4 @@ function <%=val.getId()%>_createRowMenu(rowData){
 }
 %>
 sessionWarn.setCookie();
---></script>
+</script>

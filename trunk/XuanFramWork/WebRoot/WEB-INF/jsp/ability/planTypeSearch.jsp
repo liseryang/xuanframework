@@ -4,7 +4,7 @@
 	response.setDateHeader("Expires", -10);
 %>
 
-<x:tbody title="计划类别扩展" iconCls="icon-dot">
+<x:tbody title="计划扩展类别" iconCls="icon-dot">
   <table id="planType">
   </table>
   <div id="planType_mm" class="easyui-menu" style="width:120px;">
@@ -15,7 +15,7 @@
 <script>
 		$(function(){
 			$('#planType').treegrid({
-				title:'扩展计划类别',
+				title:'计划扩展类别',
 				iconCls:'icon-save',
 				width:'auto',
 				height:'auto',
@@ -39,7 +39,7 @@
 				]],
 				toolbar:[{text:'增加',
 						iconCls:'icon-add',
-						handler:function(){popWin('增加扩展计划类别', '/c/jsp/ability/planTypeAdd', 'icon-search', 360, 200);}
+						handler:function(){popWin('增加计划扩展类别', '/c/jsp/ability/planTypeAdd', 'icon-search', 360, 300);}
 				},'-'],
 				onContextMenu: function(e,row){
 					e.preventDefault();
@@ -54,7 +54,7 @@
 		});
 		var codeIndex = 1000;
 		function append(){
-			popWin('增加扩展计划类别', '/c/jsp/ability/planTypeAdd', 'icon-search', 360, 200);
+			popWin('增加计划扩展类别', '/c/jsp/ability/planTypeAdd', 'icon-search', 360, 300);
 		}
 		function remove(){
 			var node = $('#planType').treegrid('getSelected');
