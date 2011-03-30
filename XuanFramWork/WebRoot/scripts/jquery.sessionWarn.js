@@ -117,9 +117,9 @@ var sessionWarn = {
 	warn : function() {
 		var instance = this;
 
-		var win = $('<div id="my_pop_win" style="PADDING: 8px;"></div>')
+		var win = $('<div id="my_warn_win" style="PADDING: 8px;"></div>')
 				.appendTo('body');
-		var content = '<div class="messager-icon messager-info"></div><strong>您的将于<span class="countdown-timer" style="color:red"></span>后结束本次会话</strong><br/><div align="center" width="120"><a href="#" onClick="sessionWarn.extend();">延迟</a>&nbsp;&nbsp;<a href="#" onClick="sessionWarn.expire();">关闭</a></div>';
+		var content = '<div class="messager-icon messager-info"></div><strong>您的将于<span class="countdown-timer" style="color:red"></span>后结束本次会话</strong><br/><div align="center" width="120"><a href="#" onClick="sessionWarn.extend();">延迟</a>&nbsp;&nbsp;<a href="#" onClick="sessionWarn.expire();">退出</a></div>';
 		win.append(content);
 		win.window( {
 			title : '系统提示',
@@ -133,8 +133,11 @@ var sessionWarn = {
 			resizable : false,
 			showType : 'fade',
 			showSpeed : 600,
-
 			onClose : function() {
+				setTimeout(function() {
+					sessionWarn.expire();
+					win.window('destroy');
+				}, 100);
 			}
 		});
 		instance.banner = win;

@@ -123,17 +123,6 @@ function windowOpen(title, url, onClose, swidth, sheight) {
 							+ x + ',screenY=' + y + ',top=' + y + ',left=' + x);
 }
 
-// 给Grid标记使用的取数逻辑（可以废弃）
-function getPages(id) {
-	$('#_' + id + '_page_num').val(
-			$('#' + id + '').datagrid("options").pageNumber);
-	$('#_' + id + '_page_size').val(
-			$('#' + id + '').datagrid("options").pageSize);
-	postDataAsync("fm_" + id, "/c/t/q/" + id, function(data) {
-		$('#' + id).datagrid('loadData', data);
-	}, false);
-}
-
 // 生成Grid与查询交互的方法
 function getParams(id) {
 	if (!id)
@@ -175,18 +164,20 @@ function showModal(title, url, icon, onClose, width, height) {
 	$('#print_iframe').attr('src', url);
 	$('#popup').window('open');
 }
+
 /*
  * function alert(msg, title, clz) { var t = "提示"; if (title) t = title; var
- * icon = ""; if (clz) icon = clz; $.messager.alert(t, msg, icon); }
+ * icon = ""; if (clz) icon = clz; $.messager.alert(t, msg, icon); return false; }
  * 
  * function error(msg) { alert(msg, '错误', 'error'); } function info(msg) {
  * alert(msg, '信息', 'info'); } function question(msg) { alert(msg, '问题',
  * 'question'); } function warning(msg) { alert(msg, '警告', 'warning'); }
  * 
- * function confirm(msg) { $.messager.confirm('确认', msg,aa = function(r) {
+ * 
+ * function confirm(msg) { $.messager.confirm('确认', msg, aa = function(r) {
  * return r; }); }
  */
-
+ 
 function popWin(title, url, icon, width, height) {
 	var win = $('<div id="my_pop_win" class="messager-body"></div>').appendTo(
 			'body');
@@ -252,42 +243,45 @@ function formToJSON(form) {
 	for (i = 0, max = form.elements.length; i < max; i++) {
 		e = form.elements[i];
 		name = e.name;
-		if (name.substring(name.length - 2) == '[]') {
-			name = name.substring(0, name.length - 2);
-			lastarr = name;
-			if (isarray == false) {
-				json += '"' + name + '":[';
+		if (name != "") {
+			if (name.substring(name.length - 2) == '[]') {
+				name = name.substring(0, name.length - 2);
+				lastarr = name;
+				if (isarray == false) {
+					json += '"' + name + '":[';
+				}
+				isarray = true;
+			} else {
+				if (isarray) {
+					json = json.substring(0, json.length - 1) + '],';
+				}
+				isarray = false;
 			}
-			isarray = true;
-		} else {
-			if (isarray) {
-				json = json.substring(0, json.length - 1) + '],';
-			}
-			isarray = false;
-		}
 
-		switch (e.type) {
-		case 'checkbox':
-		case 'radio':
-			if (!e.checked) {
+			switch (e.type) {
+			case 'checkbox':
+			case 'radio':
+				if (!e.checked) {
+					break;
+				}
+			case 'hidden':
+			case 'password':
+			case 'text':
+				if (!isarray) {
+					json += '"' + name + '":';
+				}
+				json += '"'
+						+ e.value.replace(new RegExp('(["\\\\])', 'g'), '\\$1')
+						+ '",';
 				break;
-			}
-		case 'hidden':
-		case 'password':
-		case 'text':
-			if (!isarray) {
-				json += '"' + name + '":';
-			}
-			json += '"' + e.value.replace(new RegExp('(["\\\\])', 'g'), '\\$1')
-					+ '",';
-			break;
 
-		case 'button':
-		case 'file':
-		case 'image':
-		case 'reset':
-		case 'submit':
-		default:
+			case 'button':
+			case 'file':
+			case 'image':
+			case 'reset':
+			case 'submit':
+			default:
+			}
 		}
 	}
 	;
