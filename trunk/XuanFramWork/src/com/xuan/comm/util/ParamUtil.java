@@ -59,7 +59,7 @@ public class ParamUtil {
 	}
 
 	// 处理Boolean
-	public static boolean getBoolean(ServletRequest req, String param) {
+	public static Boolean getBoolean(ServletRequest req, String param) {
 		return GetterUtil.getBoolean(req.getParameter(param));
 	}
 
@@ -222,7 +222,7 @@ public class ParamUtil {
 
 	// 处理Long
 	public static Long getLong(ServletRequest req, String param) {
-		return getLong(req, param);
+		return getLong(req, param,null);
 	}
 
 	public static Long getLong(ServletRequest req, String param,
@@ -290,7 +290,7 @@ public class ParamUtil {
 		if (src != null && src.length > 0) {
 			for (int i = 0; i < src.length; i++) {
 				Short sho = null;
-				if (src[i] == null)
+				if (src[i] != null)
 					sho = new Short(src[i]);
 				dest[i] = sho;
 			}

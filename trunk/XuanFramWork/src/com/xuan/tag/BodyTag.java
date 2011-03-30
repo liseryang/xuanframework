@@ -47,16 +47,15 @@ public class BodyTag extends BodyTagSupport {
 
 	public int doEndTag() throws JspException {
 		try {
-			ServletRequest req = this.pageContext.getRequest();
+			// ServletRequest req = this.pageContext.getRequest();
 			TagUtils.include(this.pageContext, getStartPage());
 
-			req.removeAttribute(TagGlobalNames.TAG_BODY_TITLE);
-			req.removeAttribute(TagGlobalNames.TAG_BODY_NAV);
-			req.removeAttribute(TagGlobalNames.TAG_BODY_ICON);
-			
+			// req.removeAttribute(TagGlobalNames.TAG_BODY_TITLE);
+			// req.removeAttribute(TagGlobalNames.TAG_BODY_NAV);
+			// req.removeAttribute(TagGlobalNames.TAG_BODY_ICON);
+
 			this.pageContext.getOut().print(getBodyContent().getString());
 			TagUtils.include(this.pageContext, getEndPage());
-			
 
 		} catch (Exception e) {
 			throw new JspException(e);

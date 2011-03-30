@@ -34,7 +34,7 @@ public class PropertiesUtil {
 	}
 
 	/**
-	 * 将多个Properties文件属性合并为一个
+	 * 将map里面的内容放入Properties
 	 * 
 	 * @param map
 	 * @return
@@ -51,13 +51,9 @@ public class PropertiesUtil {
 		while (itr.hasNext()) {
 			@SuppressWarnings("rawtypes")
 			Map.Entry entry = (Map.Entry) itr.next();
-
-			String key = (String) entry.getKey();
-			String value = (String) entry.getValue();
-
-			if (value != null) {
-				p.setProperty(key, value);
-			}
+			p.setProperty(entry.getKey().toString(),
+					entry.getValue() == null ? "null" : entry.getValue()
+							.toString());
 		}
 
 		return p;
@@ -195,12 +191,9 @@ public class PropertiesUtil {
 	 */
 	public static String toString(Properties p) {
 		StringBuffer sm = new StringBuffer();
-
 		Enumeration<?> enu = p.propertyNames();
-
 		while (enu.hasMoreElements()) {
 			String key = (String) enu.nextElement();
-
 			sm.append(key);
 			sm.append(StringPool.EQUAL);
 			sm.append(p.getProperty(key));
@@ -216,14 +209,11 @@ public class PropertiesUtil {
 	 * @param p
 	 */
 	public static void trimKeys(Properties p) {
-		
 		Enumeration<?> enu = p.propertyNames();
 		while (enu.hasMoreElements()) {
 			String key = (String) enu.nextElement();
 			String value = p.getProperty(key);
-
 			String trimmedKey = key.trim();
-
 			if (!key.equals(trimmedKey)) {
 				p.remove(key);
 				p.setProperty(trimmedKey, value);
@@ -232,7 +222,6 @@ public class PropertiesUtil {
 	}
 
 	public static void main(String[] args) throws IOException {
-		
 
 		// "com/xuan/jdbc.properties"
 		InputStream in_1 = ClassLoader
@@ -247,6 +236,6 @@ public class PropertiesUtil {
 
 		PropertiesUtil.copyProperties(p_1, p_2);
 
-//		System.out.println(PropertiesUtil.toString(p_1));
+		// System.out.println(PropertiesUtil.toString(p_1));
 	}
 }
