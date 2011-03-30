@@ -109,7 +109,7 @@
 			<ul>
 	            <LI><A href="###" onClick="addTab('计划模板', '/c/jsp/template/templateSearch');">计划模板</A></LI>
 				<LI><A href="###" onClick="addTab('能力指标', '/c/jsp/ability/abilityIndexSearch');">能力指标</A></LI>
-				<LI><A href="###" onClick="addTab('计划类别扩展', '/c/jsp/ability/planTypeSearch');">计划类别扩展</A></LI>
+				<LI><A href="###" onClick="addTab('计划扩展类别', '/c/jsp/ability/planTypeSearch');">计划扩展类别</A></LI>
 	          </ul>
 			</LI>
 	      </UL>
@@ -227,13 +227,13 @@
 		contentsource : "markup" //"markup" or ["container_id", "path_to_menu_file"]
 	});
 	
-	sessionWarn.init({
+/*	sessionWarn.init({
 		autoExtend:false,
 		timeout:30,
-		timeoutWarning:27,
+		timeoutWarning:2,
 		redirectOnExpire:true
 	});
-		
+		*/
 	function addTab(title, url) {
 		refHistory(title, url);
 		

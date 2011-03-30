@@ -6,7 +6,7 @@
 %>
 
 <x:tbody title="待办任务" iconCls="icon-dot">
-  <x:grid id="first" hql="from TaskInfo" idfield="taskId" where="taskStatus = 0" onDblClickRow="if (rec.taskId == 1 ) window.location.href='/c/jsp/programManagement/publishedTaskPlan?edit=true'; else window.location.href='/c/jsp/programManagement/publishedTaskPlan?edit=false';">
+  <x:grid id="first" hql="from TaskInfo" idfield="taskId" where="taskStatus = 0" onDblClickRow="if (rec.taskId == 1 ) window.location.href='/c/jsp/programManagement/submitTaskPlan'; else window.location.href='/c/jsp/programManagement/publishedTaskPlan?edit=false';">
     <div id="p" class="easyui-panel" title="查询条件" icon="icon-search" collapsible="true" style="padding:2px;background:#fafafa;">
       <table class="userInput_table" cellspacing="0" cellpadding="0"
 		border="1" style="margin: 1 auto; width: 100%;">

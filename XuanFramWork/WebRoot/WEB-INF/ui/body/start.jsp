@@ -22,5 +22,5 @@
 </head>
 <body <%if (request.getAttribute("xuan_ui_page_nav") != null && !request.getAttribute("xuan_ui_page_nav").equals("null")) {%>class="easyui-layout"<%} %>>
 <%if (request.getAttribute("xuan_ui_page_nav") != null && !request.getAttribute("xuan_ui_page_nav").equals("null")) {%>
-<div id="body_center" region="center" title="当前功能：<%=request.getAttribute("xuan_ui_page_nav")%>" iconCls="<%=request.getAttribute("xuan_ui_page_iconCls")%>" style="padding:2px;">
+<div id="body_center" region="center" title="当前功能：<%=request.getAttribute("xuan_ui_page_nav")%>" iconCls="<%=request.getAttribute("xuan_ui_page_iconCls")%>" style="padding:2px;" fit="true">
 <%} %>

@@ -51,102 +51,106 @@
   </div>
   <table class="userInput_table" cellspacing="0" cellpadding="0" border="1" style="margin: 1 auto; width: 580px;">
     <tr>
-      <td class="td_context"><a href="#" class="easyui-linkbutton" plain="true" iconcls="icon-analysis" onClick="alert('发布分摊，由计划部再次调整分摊的金额');parent.closePop();">分摊</a> <a href="#" class="easyui-linkbutton" plain="true" iconcls="icon-analysis" onClick="alert('将项目投资分摊到选中的分公司上去，如不能平均分配，则把余额计入最后一个公司');">自动分摊</a>
+	  <td class="td_title">xxxx计划</td>
+      <td class="td_context">
+	  <a href="#" class="easyui-linkbutton" plain="true" onClick="alert('弹出计划选择窗口，选定一个可以分摊的计划，根据填报单位及模板中定义的数据列生成下表！');">选择计划</a>
+	  <a href="#" class="easyui-linkbutton" plain="true" onClick="alert('制定某一列为投资金额列，用于分摊数据');">指定金额列</a>
+	  <a href="#" class="easyui-linkbutton" plain="true" onClick="alert('发布分摊，由计划部再次调整分摊的金额');parent.closePop();">分摊</a>
+	  <a href="#" class="easyui-linkbutton" plain="true" onClick="alert('将项目投资分摊到选中的分公司上去，如不能平均分配，则把余额计入最后一个公司');">自动分摊</a>
 	  <a href="#" class="easyui-linkbutton" plain="true" iconcls="icon-undo" onClick="parent.closePop();">取消</a></td>
     </tr>
   </table>
-  <div id="p" class="easyui-panel" title="填写分摊金额" icon="icon-edit" style="padding:2px; width:580px; margin-bottom:2px;background:#fafafa;">
-    <table width="447" class="easyui-datagrid" id="tt1" style="width:auto;height:auto;">
+  <div id="p" class="easyui-panel" title="填写分摊信息" icon="icon-edit" style="padding:2px; width:580px; margin-bottom:2px;background:#fafafa;">
+    <table width="912" class="easyui-datagrid" id="tt1" style="width:auto;height:auto;">
       <thead>
         <tr>
-          <th width="34" field="name0"><div align="center">
-            <input name="" type="checkbox" value="">
-          </div></th>
-          <th width="70" field="name1"><div align="center"><strong>编号</strong></div></th>
           <th width="138" field="name2"><div align="center"><strong>名称</strong></div></th>
-          <th width="185" field="name3"><div align="center"><strong>分摊金额</strong></div></th>
+          <th width="185" field="name3"><div align="center"><strong>项目名称</strong></div></th>
+          <th width="185" field="name4"><div align="center"><strong>项目描述</strong></div></th>
+          <th width="185" field="name6"><div align="center"><strong>分摊金额</strong></div></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td align="right" width="34"><div align="center">
-            <input name="Input10" type="checkbox" value="">
-          </div></td>
-          <td align="right" width="70">12005</td>
           <td width="138">福建省公司/漳州分公司</td>
-          <td><input id="nn" class="easyui-numberbox" min="5.5" precision="2"/>          </td>
+          <td><input id="nn" class="easyui-numberbox" min="5.5" precision="2"/>
+            *          </td>
+          <td><input id="nn" class="easyui-numberbox" min="5.5" precision="2"/>
+          </td>
+          <td><input id="nn" class="easyui-numberbox" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input11" type="checkbox" value="">
-          </div></td>
-          <td align="right">12061</td>
           <td>福建省公司/宁德分公司</td>
+          <td><input name="Input" class="easyui-numberbox" id="Input" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input" class="easyui-numberbox" id="Input" min="5.5" precision="2"/></td>
+          <td><input name="Input" class="easyui-numberbox" id="Input" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input12" type="checkbox" value="">
-          </div></td>
-          <td align="right">11021</td>
           <td>福建省公司/南平分公司</td>
+          <td><input name="Input2" class="easyui-numberbox" id="Input2" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input2" class="easyui-numberbox" id="Input2" min="5.5" precision="2"/></td>
+          <td><input name="Input2" class="easyui-numberbox" id="Input2" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input13" type="checkbox" value="">
-          </div></td>
-          <td align="right">10753</td>
           <td>福建省公司/厦门分公司</td>
+          <td><input name="Input3" class="easyui-numberbox" id="Input3" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input3" class="easyui-numberbox" id="Input3" min="5.5" precision="2"/></td>
+          <td><input name="Input3" class="easyui-numberbox" id="Input3" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input14" type="checkbox" value="">
-          </div></td>
-          <td align="right">11517</td>
           <td>福建省公司/福州分公司</td>
+          <td><input name="Input4" class="easyui-numberbox" id="Input4" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input4" class="easyui-numberbox" id="Input4" min="5.5" precision="2"/></td>
+          <td><input name="Input4" class="easyui-numberbox" id="Input4" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input15" type="checkbox" value="">
-          </div></td>
-          <td align="right">12105</td>
           <td>福建省公司/三明分公司</td>
+          <td><input name="Input5" class="easyui-numberbox" id="Input5" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input5" class="easyui-numberbox" id="Input5" min="5.5" precision="2"/></td>
+          <td><input name="Input5" class="easyui-numberbox" id="Input5" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input16" type="checkbox" value="">
-          </div></td>
-          <td align="right">104121</td>
           <td>福建省公司/各市分公司</td>
+          <td><input name="Input6" class="easyui-numberbox" id="Input6" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input6" class="easyui-numberbox" id="Input6" min="5.5" precision="2"/></td>
+          <td><input name="Input6" class="easyui-numberbox" id="Input6" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input17" type="checkbox" value="">
-          </div></td>
-          <td align="right">12597</td>
           <td>福建省公司/莆田分公司</td>
+          <td><input name="Input7" class="easyui-numberbox" id="Input7" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input7" class="easyui-numberbox" id="Input7" min="5.5" precision="2"/></td>
+          <td><input name="Input7" class="easyui-numberbox" id="Input7" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input18" type="checkbox" value="">
-          </div></td>
-          <td align="right">12833</td>
           <td>福建省公司/龙岩分公司</td>
+          <td><input name="Input8" class="easyui-numberbox" id="Input8" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input8" class="easyui-numberbox" id="Input8" min="5.5" precision="2"/></td>
+          <td><input name="Input8" class="easyui-numberbox" id="Input8" min="5.5" precision="2"/>
+          * </td>
         </tr>
         <tr>
-          <td align="right"><div align="center">
-            <input name="Input19" type="checkbox" value="">
-          </div></td>
-          <td align="right">12837</td>
           <td>福建省公司/泉州分公司</td>
+          <td><input name="Input9" class="easyui-numberbox" id="Input9" min="5.5" precision="2"/>
+          * </td>
           <td><input name="Input9" class="easyui-numberbox" id="Input9" min="5.5" precision="2"/></td>
+          <td><input name="Input9" class="easyui-numberbox" id="Input9" min="5.5" precision="2"/>
+          * </td>
         </tr>
       </tbody>
     </table>
