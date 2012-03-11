@@ -42,7 +42,7 @@ public class GridPropertiesBean {
 	// 双击方法,如果有操作,那么默认第一个为双击, 参数rowIndex，直接写js代码
 	private String onDblClickRow = null;
 	private String hql;
-	private String idfield;// 多个以,分割
+	private String idfield = "";// 多个以,分割
 	private String where = "1=1";
 	private String groupBy = "";
 	private String orderBy = idfield;// 如果没有就默认排序为 idfield;

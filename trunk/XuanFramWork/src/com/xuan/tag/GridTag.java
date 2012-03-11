@@ -56,14 +56,12 @@ public class GridTag extends BodyTagSupport {
 	private boolean needConfig = true;
 	// rowIndex，直接写js代码
 	private String onClickRow = null;
-	
-	
+
 	// 双击一行的方法，直接写js，两个参数，rowIndex,rec
 	private String onDblClickRow = null;
-	
-	
+
 	private String hql;
-	private String idfield;// 多个以,分割
+	private String idfield = "";// 多个以,分割
 	private String where = "1=1";
 	private String groupBy = "";
 	private String orderBy = idfield;// 如果没有就默认排序为 idfield;
@@ -80,13 +78,13 @@ public class GridTag extends BodyTagSupport {
 			throw new JspException(e);
 		}
 		_log.debug(grp);
-		//把Grid写出操作全部扔到最后完成
-		Map<String,GridPropertiesBean> ids = null;
+		// 把Grid写出操作全部扔到最后完成
+		Map<String, GridPropertiesBean> ids = null;
 		if (req.getAttribute(TagGlobalNames.TAG_GRIDS) == null) {
 			ids = new HashMap<String, GridPropertiesBean>();
 			ids.put(id, grp);
 		} else {
-			ids = (Map<String,GridPropertiesBean>) req
+			ids = (Map<String, GridPropertiesBean>) req
 					.getAttribute(TagGlobalNames.TAG_GRIDS);
 			ids.put(id, grp);
 		}
@@ -96,7 +94,7 @@ public class GridTag extends BodyTagSupport {
 		return EVAL_BODY_BUFFERED;
 	}
 
-	public int doAfterBody()throws JspException {
+	public int doAfterBody() throws JspException {
 		return SKIP_BODY;
 	}
 

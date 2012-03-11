@@ -44,7 +44,8 @@ public class BaseController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			out.close();
+			if (out != null)
+				out.close();
 		}
 	}
 }

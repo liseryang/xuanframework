@@ -221,11 +221,17 @@ public class FileUtils {
 			int i = files.length;
 			int a = 0;
 			for (a = 0; (a < i) && (i > 0); a++)
-				copyFile(files[a], new File(destDir
-						+ File.separator
-						+ files[a].getCanonicalPath().substring(
-								files[a].getCanonicalPath().lastIndexOf(
-										File.separator) + 1)));
+				copyFile(
+						files[a],
+						new File(
+								destDir
+										+ File.separator
+										+ files[a]
+												.getCanonicalPath()
+												.substring(
+														files[a].getCanonicalPath()
+																.lastIndexOf(
+																		File.separator) + 1)));
 
 		}
 	}
@@ -337,8 +343,10 @@ public class FileUtils {
 		} catch (Exception e) {
 			_log.error(e.getMessage());
 		} finally {
-			stream.close();
-			bos.close();
+			if (stream != null)
+				stream.close();
+			if (bos != null)
+				bos.close();
 		}
 		return flag;
 	}
