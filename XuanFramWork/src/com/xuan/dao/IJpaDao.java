@@ -275,8 +275,7 @@ public interface IJpaDao {
 	 *            注意参数输入的最后一个参数必须为Integer类型，必须在存储过程中返回
 	 * @return
 	 */
-	public long prepareCall(String sql, Object... args);
-
+	public long prepareCall2(String sql, Object... args); 
 	/**
 	 * 通过SQL执行，删除，插入，修改动作
 	 * 

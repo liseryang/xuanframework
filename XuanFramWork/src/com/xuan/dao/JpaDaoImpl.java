@@ -446,7 +446,7 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 */
 	@Transactional()
 	public long prepareCall(String sql, List<?> args) {
-		return prepareCall(sql, args);
+		return prepareCall2(sql, args);
 	}
 
 	/*
@@ -456,7 +456,7 @@ public class JpaDaoImpl<E> extends JpaDaoSupport implements IJpaDao {
 	 * java.lang.Object[])
 	 */
 	@Transactional()
-	public long prepareCall(String sql, Object... args) {
+	public long prepareCall2(String sql, Object... args) {
 		List<Object> params = new ArrayList<Object>();
 		if (args != null) {
 			for (Object param : args)
