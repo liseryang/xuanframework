@@ -69,6 +69,8 @@ public class BeanUtilTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		if (result == null)
+			result = "";
 		assertEquals("dark", result.toString());
 	}
 
