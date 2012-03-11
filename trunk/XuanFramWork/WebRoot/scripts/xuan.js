@@ -6,6 +6,7 @@ function timestamp() {
 
 // 同步提交form
 function postDataAsync(formId, url, _callBack, async) {
+	sessionWarn.setCookie();
 	var dataform = jQuery("#" + formId).formSerialize();
 	if (url.indexOf('?') > 0)
 		url = url + "&";

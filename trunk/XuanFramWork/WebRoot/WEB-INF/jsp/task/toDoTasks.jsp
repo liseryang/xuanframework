@@ -31,9 +31,9 @@
     <x:colsWrap>
       <x:col width="100" title="发起人" field="creater" sortable="true" frozen="true"></x:col>
       <x:col width="100" title="申请时间" field="createDate" sortable="true"></x:col>
-      <x:col width="200" title="工单类型" field="taskType"></x:col>
-      <x:col width="200" title="主题" field="topics"></x:col>
-      <x:col width="100" title="当前状态" field="taskStatus"></x:col>
+      <x:col width="200" title="工单类型" field="taskType" sortable="true"></x:col>
+      <x:col width="200" title="主题" field="topics" sortable="true"></x:col>
+      <x:col width="100" title="当前状态" field="taskStatus" sortable="true"></x:col>
     </x:colsWrap>
     <x:grm iconCls="icon-ok" handler="alert('签收：'+rowData.topics);" text="签收"/>
     <x:grm iconCls="icon-redo" handler="alert('退回：'+rowData.topics);" text="退回" disabled="rowData.taskStatus == '0'"/>
