@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:directive.page import="com.xuan.tag.TagGlobalNames" />
+<jsp:directive.page import="com.pccw.tag.TagGlobalNames" />
 <jsp:directive.page import="java.util.HashMap" />
 <jsp:directive.page import="java.util.Map" />
 <jsp:directive.page import="java.util.Iterator" />
+<jsp:directive.page import="java.util.List" />
+<jsp:directive.page import="java.util.ArrayList" />
 <%if (request.getAttribute("xuan_ui_page_nav") != null && !request.getAttribute("xuan_ui_page_nav").equals("null")) {%>
 </div>
 <%} %>
@@ -19,7 +21,8 @@ if (grids != null){
 	while (iter.hasNext()) {
 	    Map.Entry entry = (Map.Entry) iter.next();
 	    String key = (String)entry.getKey();
-	    com.xuan.tag.util.GridPropertiesBean val = (com.xuan.tag.util.GridPropertiesBean)entry.getValue();
+	    com.pccw.tag.util.GridPropertiesBean val = (com.pccw.tag.util.GridPropertiesBean)entry.getValue();
+	    List sortList = new ArrayList();
 %>
 $(function(){
 	$('#<%=val.getId()%>').datagrid({
@@ -31,10 +34,9 @@ $(function(){
 		striped: <%=val.isStriped()%>,
 		sortName: '<%=val.getSortName() == null ? "" : val.getSortName()%>',
 		sortOrder: '<%=val.getSortOrder() == null ? "asc" : val.getSortOrder()%>',
-		url:'/c/t/q/<%=val.getId()%><%=val.getQueryId() == null ? "" : "/"+val.getQueryId()%>',
+		url:'<%=val.getQueryURL()%>',
 		queryParams:getParams('<%=val.getId()%>'),
 		remoteSort: true,
-		idField:'<%=val.getIdfield()%>',
 		pagination:<%=val.isPagination()%>,
 		rownumbers:<%=val.isRownumbers()%>,
 		singleSelect:<%=val.isSingleSelect()%>,
@@ -50,7 +52,8 @@ $(function(){
             <%
             for(int i = 0;i < val.getFrozenColumns().size();i++){
             	if(i > 0) out.print(",");
-            	com.xuan.tag.util.ColumnPropertiesBean cpb = (com.xuan.tag.util.ColumnPropertiesBean)val.getFrozenColumns().get(i);
+            	com.pccw.tag.util.ColumnPropertiesBean cpb = (com.pccw.tag.util.ColumnPropertiesBean)val.getFrozenColumns().get(i);
+            	if (cpb.isSortable() && !cpb.getSortField().equals("")) sortList.add(cpb);
             %>
             {field:'<%=cpb.getField()%>',
              title:'<%=cpb.getTitle()%>',
@@ -77,7 +80,8 @@ $(function(){
 			        <%
 			        for(int j=0;j<tmp.size();j++){
 			        	if (j > 0) out.print(",");
-			        	com.xuan.tag.util.ColumnPropertiesBean cpb = (com.xuan.tag.util.ColumnPropertiesBean)tmp.get(j);
+			        	com.pccw.tag.util.ColumnPropertiesBean cpb = (com.pccw.tag.util.ColumnPropertiesBean)tmp.get(j);
+			        	if (cpb.isSortable() && !cpb.getSortField().equals("")) sortList.add(cpb);
 			        %>
 			        {field:'<%=cpb.getField()%>',
 			             title:'<%=cpb.getTitle()%>',
@@ -91,14 +95,15 @@ $(function(){
 								return <%=cpb.getFormatter()%>;
 							}
 			          	 <%}%>
-			          	 }
+			          	 
+			        }
 					<%
 			        }
 					%>
-					//加一列操作
 					<%
 					if (i == 0 && val.getRowContextMenus().size() > 0){
 					%>
+					//加一列操作
 					,{field:'<%=val.getId()%>_myOp',
 						title:'操作',
 						width:60,align:'center',
@@ -112,19 +117,6 @@ $(function(){
 				<%}%>
 				],
 		// columns end
-		<%if (val.getQueryId() != null){%>
-		//detail View begin		
-		/*view: detailview,
-		detailFormatter: function(rowIndex, rowData){
-			        return '<table><tr>' +
-	                '<td style="border:0">' +
-	                '<p>计划编号: ' + rowData.planNum + '</p>' +
-	                '<p>计划状态: ' + rowData.planStatus + '</p>' +
-	                '</td>' +
-	                '</tr></table>';
-		},*/
-		<%}%>
-		//detail View end
 		
 		// toolbars begin
 		<%if (val.getToolBars().size() > 0){%>
@@ -132,7 +124,7 @@ $(function(){
 			//$(".datagrid-toolbar"); 
 		 <%
 		 for(int i = 0;i < val.getToolBars().size();i++){
-			 com.xuan.tag.util.GridToolBarBean tbb = (com.xuan.tag.util.GridToolBarBean)val.getToolBars().get(i);
+			 com.pccw.tag.util.GridToolBarBean tbb = (com.pccw.tag.util.GridToolBarBean)val.getToolBars().get(i);
 		 %>
 		 	<%if (i > 0){%>
 		 	,'-',
@@ -147,8 +139,27 @@ $(function(){
 		],
 		<%}%>
 		// toolbars end
-
+		<%
+		if (sortList.size()>0){
+		%>
 		
+		onSortColumn:function(sort, order){
+			<%
+			for(int i = 0;i<sortList.size();i++){
+				com.pccw.tag.util.ColumnPropertiesBean cpb = (com.pccw.tag.util.ColumnPropertiesBean)sortList.get(i);
+			%>
+			if (sort == '<%=cpb.getField()%>'){ $('#<%=val.getId()%>').datagrid('options').sortName = "<%=cpb.getSortField()%>";return;}
+			<%
+			}
+			%>
+			alert(sort);
+			alert(order);
+			//$('#<%=val.getId()%>').datagrid('options').sortName = "order_header_id";
+			alert($('#<%=val.getId()%>').datagrid('options').sortName);
+		},
+		<%
+		}
+		%>
 		<%if (val.getOnDblClickRow() != null){%>
 		onDblClickRow:function(rowIndex,rec){
 			<%=val.getOnDblClickRow()%>
@@ -178,22 +189,12 @@ $(function(){
 	if (p){
 		$(p).pagination({
 			buttons:[
-			<%if (val.isNeedPrint()){%>
+			<%if (val.isNeedExport()){%>
 			{
-				iconCls:'icon-print',
+				iconCls:'icon-excel',
+				text:'导出Excel',
 				handler:function(){
-				popWin('打印','/c/jsp/comm/print?id=<%=val.getId()%>','icon-print',640,480);
-				}
-			},
-			<%}%>
-			<%if (val.isNeedPrint() || val.isNeedConfig()){%>
-			'-'
-			<%}%>
-			<%if (val.isNeedConfig()){%>
-			,{
-				iconCls:'icon-config',
-				handler:function(){
-				popWin('配置','/c/jsp/comm/config?id=<%=val.getId()%>','icon-config',640,480);
+				popWin('导出Excel','/comm/exportSetup.jsp?id=<%=val.getId()%>&count=100','icon-excel',320,240);
 				}
 			}
 			<%}%>
@@ -214,7 +215,7 @@ function <%=val.getId()%>_createRowMenu(rowData){
 	<%
 	StringBuffer sb = new StringBuffer();
 	 for(int i = 0;i < val.getRowContextMenus().size();i++){
-		 com.xuan.tag.util.GridRowContextMenuBean rcm = (com.xuan.tag.util.GridRowContextMenuBean)val.getRowContextMenus().get(i);
+		 com.pccw.tag.util.GridRowContextMenuBean rcm = (com.pccw.tag.util.GridRowContextMenuBean)val.getRowContextMenus().get(i);
 		 sb.append(i > 0 ? "else " : "");
 		 sb.append("if (item.iconCls=='");
 		 sb.append(rcm.getIconCls());
@@ -237,5 +238,4 @@ function <%=val.getId()%>_createRowMenu(rowData){
 <%}
 }
 %>
-sessionWarn.setCookie();
 </script>
