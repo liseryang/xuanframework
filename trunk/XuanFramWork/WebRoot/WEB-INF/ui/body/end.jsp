@@ -14,6 +14,7 @@
 <script>
 $().ready(function(){
 });
+
 <%
 Map grids = (HashMap)request.getAttribute(TagGlobalNames.TAG_GRIDS);
 if (grids != null){
