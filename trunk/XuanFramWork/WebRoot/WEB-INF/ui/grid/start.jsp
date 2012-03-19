@@ -7,4 +7,5 @@
 <input id="_<%=gpb.getId()%>_orderby" name="_<%=gpb.getId()%>_orderby" type="hidden" value="<%=gpb.getOrderBy() == null ? "" : gpb.getOrderBy()%>" />
 <input id="_<%=gpb.getId()%>_idfield" name="_<%=gpb.getId()%>_idfield" type="hidden" value="<%=gpb.getIdfield()%>" />
 <%} %>
+
 <!-- search tag begin -->
